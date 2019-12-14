@@ -4,6 +4,6 @@ set -e
 
 rm -rf src
 mkdir src
-svd2rust --target riscv -i k210.svd
+~/builds/svd2rust/release/svd2rust --target riscv -i k210.svd
 mv lib.rs src/
 cargo fmt
