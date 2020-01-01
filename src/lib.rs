@@ -1,4 +1,4 @@
-#![doc = "Peripheral access API for K210 microcontrollers (generated using svd2rust v0.16.1)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.16.1/svd2rust/#peripheral-api"]
+#![doc = "Peripheral access API for K210 microcontrollers (generated using svd2rust v0.17.0)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.17.0/svd2rust/#peripheral-api"]
 #![deny(const_err)]
 #![deny(dead_code)]
 #![deny(improper_ctypes)]
@@ -32,208 +32,143 @@ use core::ops::Deref;
 pub mod interrupt {
     #[doc = r"Enumeration of all the interrupts"]
     #[derive(Copy, Clone, Debug)]
+    #[repr(u8)]
     pub enum Interrupt {
         #[doc = "1 - SPI0"]
-        SPI0,
+        SPI0 = 1,
         #[doc = "2 - SPI1"]
-        SPI1,
+        SPI1 = 2,
         #[doc = "3 - SPI_SLAVE"]
-        SPI_SLAVE,
+        SPI_SLAVE = 3,
         #[doc = "4 - SPI3"]
-        SPI3,
+        SPI3 = 4,
         #[doc = "5 - I2S0"]
-        I2S0,
+        I2S0 = 5,
         #[doc = "6 - I2S1"]
-        I2S1,
+        I2S1 = 6,
         #[doc = "7 - I2S2"]
-        I2S2,
+        I2S2 = 7,
         #[doc = "8 - I2C0"]
-        I2C0,
+        I2C0 = 8,
         #[doc = "9 - I2C1"]
-        I2C1,
+        I2C1 = 9,
         #[doc = "10 - I2C2"]
-        I2C2,
+        I2C2 = 10,
         #[doc = "11 - UART1"]
-        UART1,
+        UART1 = 11,
         #[doc = "12 - UART2"]
-        UART2,
+        UART2 = 12,
         #[doc = "13 - UART3"]
-        UART3,
+        UART3 = 13,
         #[doc = "14 - TIMER0 channel 0 or 1 interrupt"]
-        TIMER0A,
+        TIMER0A = 14,
         #[doc = "15 - TIMER0 channel 2 or 3 interrupt"]
-        TIMER0B,
+        TIMER0B = 15,
         #[doc = "16 - TIMER1 channel 0 or 1 interrupt"]
-        TIMER1A,
+        TIMER1A = 16,
         #[doc = "17 - TIMER1 channel 2 or 3 interrupt"]
-        TIMER1B,
+        TIMER1B = 17,
         #[doc = "18 - TIMER2 channel 0 or 1 interrupt"]
-        TIMER2A,
+        TIMER2A = 18,
         #[doc = "19 - TIMER2 channel 2 or 3 interrupt"]
-        TIMER2B,
+        TIMER2B = 19,
         #[doc = "20 - RTC"]
-        RTC,
+        RTC = 20,
         #[doc = "21 - WDT0"]
-        WDT0,
+        WDT0 = 21,
         #[doc = "22 - WDT1"]
-        WDT1,
+        WDT1 = 22,
         #[doc = "23 - APB_GPIO"]
-        APB_GPIO,
+        APB_GPIO = 23,
         #[doc = "24 - DVP"]
-        DVP,
+        DVP = 24,
         #[doc = "25 - KPU"]
-        KPU,
+        KPU = 25,
         #[doc = "26 - FFT"]
-        FFT,
+        FFT = 26,
         #[doc = "27 - DMA0"]
-        DMA0,
+        DMA0 = 27,
         #[doc = "28 - DMA1"]
-        DMA1,
+        DMA1 = 28,
         #[doc = "29 - DMA2"]
-        DMA2,
+        DMA2 = 29,
         #[doc = "30 - DMA3"]
-        DMA3,
+        DMA3 = 30,
         #[doc = "31 - DMA4"]
-        DMA4,
+        DMA4 = 31,
         #[doc = "32 - DMA5"]
-        DMA5,
+        DMA5 = 32,
         #[doc = "33 - UARTHS"]
-        UARTHS,
+        UARTHS = 33,
         #[doc = "34 - GPIOHS0"]
-        GPIOHS0,
+        GPIOHS0 = 34,
         #[doc = "35 - GPIOHS1"]
-        GPIOHS1,
+        GPIOHS1 = 35,
         #[doc = "36 - GPIOHS2"]
-        GPIOHS2,
+        GPIOHS2 = 36,
         #[doc = "37 - GPIOHS3"]
-        GPIOHS3,
+        GPIOHS3 = 37,
         #[doc = "38 - GPIOHS4"]
-        GPIOHS4,
+        GPIOHS4 = 38,
         #[doc = "39 - GPIOHS5"]
-        GPIOHS5,
+        GPIOHS5 = 39,
         #[doc = "40 - GPIOHS6"]
-        GPIOHS6,
+        GPIOHS6 = 40,
         #[doc = "41 - GPIOHS7"]
-        GPIOHS7,
+        GPIOHS7 = 41,
         #[doc = "42 - GPIOHS8"]
-        GPIOHS8,
+        GPIOHS8 = 42,
         #[doc = "43 - GPIOHS9"]
-        GPIOHS9,
+        GPIOHS9 = 43,
         #[doc = "44 - GPIOHS10"]
-        GPIOHS10,
+        GPIOHS10 = 44,
         #[doc = "45 - GPIOHS11"]
-        GPIOHS11,
+        GPIOHS11 = 45,
         #[doc = "46 - GPIOHS12"]
-        GPIOHS12,
+        GPIOHS12 = 46,
         #[doc = "47 - GPIOHS13"]
-        GPIOHS13,
+        GPIOHS13 = 47,
         #[doc = "48 - GPIOHS14"]
-        GPIOHS14,
+        GPIOHS14 = 48,
         #[doc = "49 - GPIOHS15"]
-        GPIOHS15,
+        GPIOHS15 = 49,
         #[doc = "50 - GPIOHS16"]
-        GPIOHS16,
+        GPIOHS16 = 50,
         #[doc = "51 - GPIOHS17"]
-        GPIOHS17,
+        GPIOHS17 = 51,
         #[doc = "52 - GPIOHS18"]
-        GPIOHS18,
+        GPIOHS18 = 52,
         #[doc = "53 - GPIOHS19"]
-        GPIOHS19,
+        GPIOHS19 = 53,
         #[doc = "54 - GPIOHS20"]
-        GPIOHS20,
+        GPIOHS20 = 54,
         #[doc = "55 - GPIOHS21"]
-        GPIOHS21,
+        GPIOHS21 = 55,
         #[doc = "56 - GPIOHS22"]
-        GPIOHS22,
+        GPIOHS22 = 56,
         #[doc = "57 - GPIOHS23"]
-        GPIOHS23,
+        GPIOHS23 = 57,
         #[doc = "58 - GPIOHS24"]
-        GPIOHS24,
+        GPIOHS24 = 58,
         #[doc = "59 - GPIOHS25"]
-        GPIOHS25,
+        GPIOHS25 = 59,
         #[doc = "60 - GPIOHS26"]
-        GPIOHS26,
+        GPIOHS26 = 60,
         #[doc = "61 - GPIOHS27"]
-        GPIOHS27,
+        GPIOHS27 = 61,
         #[doc = "62 - GPIOHS28"]
-        GPIOHS28,
+        GPIOHS28 = 62,
         #[doc = "63 - GPIOHS29"]
-        GPIOHS29,
+        GPIOHS29 = 63,
         #[doc = "64 - GPIOHS30"]
-        GPIOHS30,
+        GPIOHS30 = 64,
         #[doc = "65 - GPIOHS31"]
-        GPIOHS31,
+        GPIOHS31 = 65,
     }
     unsafe impl bare_metal::Nr for Interrupt {
-        #[inline]
+        #[inline(always)]
         fn nr(&self) -> u8 {
-            match *self {
-                Interrupt::SPI0 => 1,
-                Interrupt::SPI1 => 2,
-                Interrupt::SPI_SLAVE => 3,
-                Interrupt::SPI3 => 4,
-                Interrupt::I2S0 => 5,
-                Interrupt::I2S1 => 6,
-                Interrupt::I2S2 => 7,
-                Interrupt::I2C0 => 8,
-                Interrupt::I2C1 => 9,
-                Interrupt::I2C2 => 10,
-                Interrupt::UART1 => 11,
-                Interrupt::UART2 => 12,
-                Interrupt::UART3 => 13,
-                Interrupt::TIMER0A => 14,
-                Interrupt::TIMER0B => 15,
-                Interrupt::TIMER1A => 16,
-                Interrupt::TIMER1B => 17,
-                Interrupt::TIMER2A => 18,
-                Interrupt::TIMER2B => 19,
-                Interrupt::RTC => 20,
-                Interrupt::WDT0 => 21,
-                Interrupt::WDT1 => 22,
-                Interrupt::APB_GPIO => 23,
-                Interrupt::DVP => 24,
-                Interrupt::KPU => 25,
-                Interrupt::FFT => 26,
-                Interrupt::DMA0 => 27,
-                Interrupt::DMA1 => 28,
-                Interrupt::DMA2 => 29,
-                Interrupt::DMA3 => 30,
-                Interrupt::DMA4 => 31,
-                Interrupt::DMA5 => 32,
-                Interrupt::UARTHS => 33,
-                Interrupt::GPIOHS0 => 34,
-                Interrupt::GPIOHS1 => 35,
-                Interrupt::GPIOHS2 => 36,
-                Interrupt::GPIOHS3 => 37,
-                Interrupt::GPIOHS4 => 38,
-                Interrupt::GPIOHS5 => 39,
-                Interrupt::GPIOHS6 => 40,
-                Interrupt::GPIOHS7 => 41,
-                Interrupt::GPIOHS8 => 42,
-                Interrupt::GPIOHS9 => 43,
-                Interrupt::GPIOHS10 => 44,
-                Interrupt::GPIOHS11 => 45,
-                Interrupt::GPIOHS12 => 46,
-                Interrupt::GPIOHS13 => 47,
-                Interrupt::GPIOHS14 => 48,
-                Interrupt::GPIOHS15 => 49,
-                Interrupt::GPIOHS16 => 50,
-                Interrupt::GPIOHS17 => 51,
-                Interrupt::GPIOHS18 => 52,
-                Interrupt::GPIOHS19 => 53,
-                Interrupt::GPIOHS20 => 54,
-                Interrupt::GPIOHS21 => 55,
-                Interrupt::GPIOHS22 => 56,
-                Interrupt::GPIOHS23 => 57,
-                Interrupt::GPIOHS24 => 58,
-                Interrupt::GPIOHS25 => 59,
-                Interrupt::GPIOHS26 => 60,
-                Interrupt::GPIOHS27 => 61,
-                Interrupt::GPIOHS28 => 62,
-                Interrupt::GPIOHS29 => 63,
-                Interrupt::GPIOHS30 => 64,
-                Interrupt::GPIOHS31 => 65,
-            }
+            *self as u8
         }
     }
     #[derive(Debug, Copy, Clone)]
@@ -348,7 +283,12 @@ pub mod interrupt {
     #[doc = r"     }"]
     #[doc = r" }"]
     #[doc = r" ```"]
-    macro_rules ! interrupt { ( $ NAME : ident , $ path : path , locals : { $ ( $ lvar : ident : $ lty : ty = $ lval : expr ; ) * } ) => { # [ allow ( non_snake_case ) ] mod $ NAME { pub struct Locals { $ ( pub $ lvar : $ lty , ) * } } # [ allow ( non_snake_case ) ] # [ no_mangle ] pub extern "C" fn $ NAME ( ) { let _ = $ crate :: interrupt :: Interrupt :: $ NAME ; static mut LOCALS : self :: $ NAME :: Locals = self :: $ NAME :: Locals { $ ( $ lvar : $ lval , ) * } ; let f : fn ( & mut self :: $ NAME :: Locals ) = $ path ; f ( unsafe { & mut LOCALS } ) ; } } ; ( $ NAME : ident , $ path : path ) => { # [ allow ( non_snake_case ) ] # [ no_mangle ] pub extern "C" fn $ NAME ( ) { let _ = $ crate :: interrupt :: Interrupt :: $ NAME ; let f : fn ( ) = $ path ; f ( ) ; } } }
+    macro_rules ! interrupt { ( $ NAME : ident , $ path : path , locals : { $ ( $ lvar : ident : $ lty : ty = $ lval : expr ; ) * } ) => { # [ allow ( non_snake_case ) ]
+mod $ NAME { pub struct Locals { $ ( pub $ lvar : $ lty , ) * } } # [ allow ( non_snake_case ) ]
+# [ no_mangle ]
+pub extern "C" fn $ NAME ( ) { let _ = $ crate :: interrupt :: Interrupt :: $ NAME ; static mut LOCALS : self :: $ NAME :: Locals = self :: $ NAME :: Locals { $ ( $ lvar : $ lval , ) * } ; let f : fn ( & mut self :: $ NAME :: Locals ) = $ path ; f ( unsafe { & mut LOCALS } ) ; } } ; ( $ NAME : ident , $ path : path ) => { # [ allow ( non_snake_case ) ]
+# [ no_mangle ]
+pub extern "C" fn $ NAME ( ) { let _ = $ crate :: interrupt :: Interrupt :: $ NAME ; let f : fn ( ) = $ path ; f ( ) ; } } }
 }
 pub use self::interrupt::Interrupt;
 #[allow(unused_imports)]
@@ -643,7 +583,8 @@ pub mod clint {
         pub type R = crate::R<u32, super::MSIP>;
         #[doc = "Writer for register msip[%s]"]
         pub type W = crate::W<u32, super::MSIP>;
-        #[doc = "Register msip[%s] `reset()`'s with value 0"]
+        #[doc = "Register msip[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::MSIP {
             type Type = u32;
             #[inline(always)]
@@ -669,7 +610,8 @@ pub mod clint {
         pub type R = crate::R<u64, super::MTIMECMP>;
         #[doc = "Writer for register mtimecmp[%s]"]
         pub type W = crate::W<u64, super::MTIMECMP>;
-        #[doc = "Register mtimecmp[%s] `reset()`'s with value 0"]
+        #[doc = "Register mtimecmp[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::MTIMECMP {
             type Type = u64;
             #[inline(always)]
@@ -766,7 +708,8 @@ pub mod plic {
             pub type R = crate::R<u32, super::ENABLE>;
             #[doc = "Writer for register enable[%s]"]
             pub type W = crate::W<u32, super::ENABLE>;
-            #[doc = "Register enable[%s] `reset()`'s with value 0"]
+            #[doc = "Register enable[%s]
+`reset()`'s with value 0"]
             impl crate::ResetValue for super::ENABLE {
                 type Type = u32;
                 #[inline(always)]
@@ -1043,7 +986,8 @@ pub mod plic {
         pub type R = crate::R<u32, super::PRIORITY>;
         #[doc = "Writer for register priority[%s]"]
         pub type W = crate::W<u32, super::PRIORITY>;
-        #[doc = "Register priority[%s] `reset()`'s with value 0"]
+        #[doc = "Register priority[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::PRIORITY {
             type Type = u32;
             #[inline(always)]
@@ -1069,7 +1013,8 @@ pub mod plic {
         pub type R = crate::R<u32, super::PENDING>;
         #[doc = "Writer for register pending[%s]"]
         pub type W = crate::W<u32, super::PENDING>;
-        #[doc = "Register pending[%s] `reset()`'s with value 0"]
+        #[doc = "Register pending[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::PENDING {
             type Type = u32;
             #[inline(always)]
@@ -1827,10 +1772,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -1846,8 +1791,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -2022,167 +1967,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -2211,10 +2222,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -2230,8 +2241,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -2406,167 +2417,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -2595,10 +2672,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -2614,8 +2691,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -2790,167 +2867,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -2979,10 +3122,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -2998,8 +3141,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -3174,167 +3317,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -3363,10 +3572,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -3382,8 +3591,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -3558,167 +3767,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -3747,10 +4022,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -3766,8 +4041,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -3942,167 +4217,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -4131,10 +4472,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -4150,8 +4491,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -4326,167 +4667,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -4515,10 +4922,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -4534,8 +4941,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -4710,167 +5117,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -4899,10 +5372,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -4918,8 +5391,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -5094,167 +5567,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -5283,10 +5822,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -5302,8 +5841,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -5478,167 +6017,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -5667,10 +6272,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -5686,8 +6291,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -5862,167 +6467,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -6051,10 +6722,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -6070,8 +6741,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -6246,167 +6917,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -6435,10 +7172,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -6454,8 +7191,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -6630,167 +7367,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -6819,10 +7622,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -6838,8 +7641,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -7014,167 +7817,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -7203,10 +8072,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -7222,8 +8091,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -7398,167 +8267,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -7587,10 +8522,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -7606,8 +8541,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -7782,167 +8717,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -7971,10 +8972,10 @@ pub mod gpiohs {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-31)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -7990,8 +8991,8 @@ pub mod gpiohs {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -8166,167 +9167,233 @@ pub mod gpiohs {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
             #[doc = "Bit 8"]
             #[inline(always)]
             pub fn pin8(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 8 }
+                PIN_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9"]
             #[inline(always)]
             pub fn pin9(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 9 }
+                PIN_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10"]
             #[inline(always)]
             pub fn pin10(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 10 }
+                PIN_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11"]
             #[inline(always)]
             pub fn pin11(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 11 }
+                PIN_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12"]
             #[inline(always)]
             pub fn pin12(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 12 }
+                PIN_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13"]
             #[inline(always)]
             pub fn pin13(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 13 }
+                PIN_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Bit 14"]
             #[inline(always)]
             pub fn pin14(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 14 }
+                PIN_W {
+                    w: self,
+                    offset: 14,
+                }
             }
             #[doc = "Bit 15"]
             #[inline(always)]
             pub fn pin15(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 15 }
+                PIN_W {
+                    w: self,
+                    offset: 15,
+                }
             }
             #[doc = "Bit 16"]
             #[inline(always)]
             pub fn pin16(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 16 }
+                PIN_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17"]
             #[inline(always)]
             pub fn pin17(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 17 }
+                PIN_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18"]
             #[inline(always)]
             pub fn pin18(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 18 }
+                PIN_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19"]
             #[inline(always)]
             pub fn pin19(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 19 }
+                PIN_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20"]
             #[inline(always)]
             pub fn pin20(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 20 }
+                PIN_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21"]
             #[inline(always)]
             pub fn pin21(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 21 }
+                PIN_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Bit 22"]
             #[inline(always)]
             pub fn pin22(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 22 }
+                PIN_W {
+                    w: self,
+                    offset: 22,
+                }
             }
             #[doc = "Bit 23"]
             #[inline(always)]
             pub fn pin23(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 23 }
+                PIN_W {
+                    w: self,
+                    offset: 23,
+                }
             }
             #[doc = "Bit 24"]
             #[inline(always)]
             pub fn pin24(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 24 }
+                PIN_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25"]
             #[inline(always)]
             pub fn pin25(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 25 }
+                PIN_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26"]
             #[inline(always)]
             pub fn pin26(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 26 }
+                PIN_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27"]
             #[inline(always)]
             pub fn pin27(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 27 }
+                PIN_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28"]
             #[inline(always)]
             pub fn pin28(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 28 }
+                PIN_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29"]
             #[inline(always)]
             pub fn pin29(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 29 }
+                PIN_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 30"]
             #[inline(always)]
             pub fn pin30(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 30 }
+                PIN_W {
+                    w: self,
+                    offset: 30,
+                }
             }
             #[doc = "Bit 31"]
             #[inline(always)]
             pub fn pin31(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 31 }
+                PIN_W {
+                    w: self,
+                    offset: 31,
+                }
             }
         }
     }
@@ -10356,7 +11423,8 @@ pub mod dmac {
         #[doc = "0x98 - Interrupt Clear Register"]
         pub intclear: self::channel::INTCLEAR,
         _reserved16: [u8; 88usize],
-        #[doc = "0xf8 - Padding to make structure size 256 bytes so that channels\\[\\] is an array"]
+        #[doc = "0xf8 - Padding to make structure size 256 bytes so that channels\\[\\]
+is an array"]
         pub _reserved: self::channel::_RESERVED,
     }
     #[doc = r"Register block"]
@@ -10567,7 +11635,7 @@ pub mod dmac {
             #[doc = "Destination master select"]
             pub type DMS_A = SMS_A;
             #[doc = "Reader of field `dms`"]
-            pub type DMS_R = crate::R<bool, SMS_A>;
+            pub type DMS_R = crate::R<bool, DMS_A>;
             #[doc = "Write proxy for field `dms`"]
             pub struct DMS_W<'a> {
                 w: &'a mut W,
@@ -10583,12 +11651,12 @@ pub mod dmac {
                 #[doc = "AXI master 1"]
                 #[inline(always)]
                 pub fn axi_master_1(self) -> &'a mut W {
-                    self.variant(SMS_A::AXI_MASTER_1)
+                    self.variant(DMS_A::AXI_MASTER_1)
                 }
                 #[doc = "AXI master 2"]
                 #[inline(always)]
                 pub fn axi_master_2(self) -> &'a mut W {
-                    self.variant(SMS_A::AXI_MASTER_2)
+                    self.variant(DMS_A::AXI_MASTER_2)
                 }
                 #[doc = r"Sets the field bit"]
                 #[inline(always)]
@@ -10685,7 +11753,7 @@ pub mod dmac {
             #[doc = "Destination address increment"]
             pub type DINC_A = SINC_A;
             #[doc = "Reader of field `dinc`"]
-            pub type DINC_R = crate::R<bool, SINC_A>;
+            pub type DINC_R = crate::R<bool, DINC_A>;
             #[doc = "Write proxy for field `dinc`"]
             pub struct DINC_W<'a> {
                 w: &'a mut W,
@@ -10701,12 +11769,12 @@ pub mod dmac {
                 #[doc = "Increment address"]
                 #[inline(always)]
                 pub fn increment(self) -> &'a mut W {
-                    self.variant(SINC_A::INCREMENT)
+                    self.variant(DINC_A::INCREMENT)
                 }
                 #[doc = "Don't increment address"]
                 #[inline(always)]
                 pub fn nochange(self) -> &'a mut W {
-                    self.variant(SINC_A::NOCHANGE)
+                    self.variant(DINC_A::NOCHANGE)
                 }
                 #[doc = r"Sets the field bit"]
                 #[inline(always)]
@@ -10859,7 +11927,7 @@ pub mod dmac {
             #[doc = "Destination transfer width"]
             pub type DST_TR_WIDTH_A = SRC_TR_WIDTH_A;
             #[doc = "Reader of field `dst_tr_width`"]
-            pub type DST_TR_WIDTH_R = crate::R<u8, SRC_TR_WIDTH_A>;
+            pub type DST_TR_WIDTH_R = crate::R<u8, DST_TR_WIDTH_A>;
             #[doc = "Write proxy for field `dst_tr_width`"]
             pub struct DST_TR_WIDTH_W<'a> {
                 w: &'a mut W,
@@ -10873,37 +11941,37 @@ pub mod dmac {
                 #[doc = "8 bits"]
                 #[inline(always)]
                 pub fn width_8(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_8)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_8)
                 }
                 #[doc = "16 bits"]
                 #[inline(always)]
                 pub fn width_16(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_16)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_16)
                 }
                 #[doc = "32 bits"]
                 #[inline(always)]
                 pub fn width_32(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_32)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_32)
                 }
                 #[doc = "64 bits"]
                 #[inline(always)]
                 pub fn width_64(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_64)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_64)
                 }
                 #[doc = "128 bits"]
                 #[inline(always)]
                 pub fn width_128(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_128)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_128)
                 }
                 #[doc = "256 bits"]
                 #[inline(always)]
                 pub fn width_256(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_256)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_256)
                 }
                 #[doc = "512 bits"]
                 #[inline(always)]
                 pub fn width_512(self) -> &'a mut W {
-                    self.variant(SRC_TR_WIDTH_A::WIDTH_512)
+                    self.variant(DST_TR_WIDTH_A::WIDTH_512)
                 }
                 #[doc = r"Writes raw bits to the field"]
                 #[inline(always)]
@@ -11085,7 +12153,7 @@ pub mod dmac {
             #[doc = "Destination burst transaction length"]
             pub type DST_MSIZE_A = SRC_MSIZE_A;
             #[doc = "Reader of field `dst_msize`"]
-            pub type DST_MSIZE_R = crate::R<u8, SRC_MSIZE_A>;
+            pub type DST_MSIZE_R = crate::R<u8, DST_MSIZE_A>;
             #[doc = "Write proxy for field `dst_msize`"]
             pub struct DST_MSIZE_W<'a> {
                 w: &'a mut W,
@@ -11099,52 +12167,52 @@ pub mod dmac {
                 #[doc = "1 data item"]
                 #[inline(always)]
                 pub fn length_1(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_1)
+                    self.variant(DST_MSIZE_A::LENGTH_1)
                 }
                 #[doc = "4 data items"]
                 #[inline(always)]
                 pub fn length_4(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_4)
+                    self.variant(DST_MSIZE_A::LENGTH_4)
                 }
                 #[doc = "8 data items"]
                 #[inline(always)]
                 pub fn length_8(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_8)
+                    self.variant(DST_MSIZE_A::LENGTH_8)
                 }
                 #[doc = "16 data items"]
                 #[inline(always)]
                 pub fn length_16(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_16)
+                    self.variant(DST_MSIZE_A::LENGTH_16)
                 }
                 #[doc = "32 data items"]
                 #[inline(always)]
                 pub fn length_32(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_32)
+                    self.variant(DST_MSIZE_A::LENGTH_32)
                 }
                 #[doc = "64 data items"]
                 #[inline(always)]
                 pub fn length_64(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_64)
+                    self.variant(DST_MSIZE_A::LENGTH_64)
                 }
                 #[doc = "128 data items"]
                 #[inline(always)]
                 pub fn length_128(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_128)
+                    self.variant(DST_MSIZE_A::LENGTH_128)
                 }
                 #[doc = "256 data items"]
                 #[inline(always)]
                 pub fn length_256(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_256)
+                    self.variant(DST_MSIZE_A::LENGTH_256)
                 }
                 #[doc = "512 data items"]
                 #[inline(always)]
                 pub fn length_512(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_512)
+                    self.variant(DST_MSIZE_A::LENGTH_512)
                 }
                 #[doc = "1024 data items"]
                 #[inline(always)]
                 pub fn length_1024(self) -> &'a mut W {
-                    self.variant(SRC_MSIZE_A::LENGTH_1024)
+                    self.variant(DST_MSIZE_A::LENGTH_1024)
                 }
                 #[doc = r"Writes raw bits to the field"]
                 #[inline(always)]
@@ -11677,7 +12745,7 @@ pub mod dmac {
             #[doc = "Destination multi-block transfer type"]
             pub type DST_MULTBLK_TYPE_A = SRC_MULTBLK_TYPE_A;
             #[doc = "Reader of field `dst_multblk_type`"]
-            pub type DST_MULTBLK_TYPE_R = crate::R<u8, SRC_MULTBLK_TYPE_A>;
+            pub type DST_MULTBLK_TYPE_R = crate::R<u8, DST_MULTBLK_TYPE_A>;
             #[doc = "Write proxy for field `dst_multblk_type`"]
             pub struct DST_MULTBLK_TYPE_W<'a> {
                 w: &'a mut W,
@@ -11693,22 +12761,22 @@ pub mod dmac {
                 #[doc = "Continuous multi-block type"]
                 #[inline(always)]
                 pub fn contiguous(self) -> &'a mut W {
-                    self.variant(SRC_MULTBLK_TYPE_A::CONTIGUOUS)
+                    self.variant(DST_MULTBLK_TYPE_A::CONTIGUOUS)
                 }
                 #[doc = "Reload multi-block type"]
                 #[inline(always)]
                 pub fn reload(self) -> &'a mut W {
-                    self.variant(SRC_MULTBLK_TYPE_A::RELOAD)
+                    self.variant(DST_MULTBLK_TYPE_A::RELOAD)
                 }
                 #[doc = "Shadow register based multi-block type"]
                 #[inline(always)]
                 pub fn shadow_register(self) -> &'a mut W {
-                    self.variant(SRC_MULTBLK_TYPE_A::SHADOW_REGISTER)
+                    self.variant(DST_MULTBLK_TYPE_A::SHADOW_REGISTER)
                 }
                 #[doc = "Linked list based multi-block type"]
                 #[inline(always)]
                 pub fn linked_list(self) -> &'a mut W {
-                    self.variant(SRC_MULTBLK_TYPE_A::LINKED_LIST)
+                    self.variant(DST_MULTBLK_TYPE_A::LINKED_LIST)
                 }
                 #[doc = r"Writes raw bits to the field"]
                 #[inline(always)]
@@ -11940,7 +13008,7 @@ pub mod dmac {
             #[doc = "Destination software or hardware handshaking select"]
             pub type HS_SEL_DST_A = HS_SEL_SRC_A;
             #[doc = "Reader of field `hs_sel_dst`"]
-            pub type HS_SEL_DST_R = crate::R<bool, HS_SEL_SRC_A>;
+            pub type HS_SEL_DST_R = crate::R<bool, HS_SEL_DST_A>;
             #[doc = "Write proxy for field `hs_sel_dst`"]
             pub struct HS_SEL_DST_W<'a> {
                 w: &'a mut W,
@@ -11956,12 +13024,12 @@ pub mod dmac {
                 #[doc = "Hardware handshaking is used"]
                 #[inline(always)]
                 pub fn hardware(self) -> &'a mut W {
-                    self.variant(HS_SEL_SRC_A::HARDWARE)
+                    self.variant(HS_SEL_DST_A::HARDWARE)
                 }
                 #[doc = "Software handshaking is used"]
                 #[inline(always)]
                 pub fn software(self) -> &'a mut W {
-                    self.variant(HS_SEL_SRC_A::SOFTWARE)
+                    self.variant(HS_SEL_DST_A::SOFTWARE)
                 }
                 #[doc = r"Sets the field bit"]
                 #[inline(always)]
@@ -12058,7 +13126,7 @@ pub mod dmac {
             #[doc = "Destination hardware handshaking interface polarity"]
             pub type DST_HWHS_POL_A = SRC_HWHS_POL_A;
             #[doc = "Reader of field `dst_hwhs_pol`"]
-            pub type DST_HWHS_POL_R = crate::R<bool, SRC_HWHS_POL_A>;
+            pub type DST_HWHS_POL_R = crate::R<bool, DST_HWHS_POL_A>;
             #[doc = "Write proxy for field `dst_hwhs_pol`"]
             pub struct DST_HWHS_POL_W<'a> {
                 w: &'a mut W,
@@ -12074,12 +13142,12 @@ pub mod dmac {
                 #[doc = "Active high"]
                 #[inline(always)]
                 pub fn active_high(self) -> &'a mut W {
-                    self.variant(SRC_HWHS_POL_A::ACTIVE_HIGH)
+                    self.variant(DST_HWHS_POL_A::ACTIVE_HIGH)
                 }
                 #[doc = "Active low"]
                 #[inline(always)]
                 pub fn active_low(self) -> &'a mut W {
-                    self.variant(SRC_HWHS_POL_A::ACTIVE_LOW)
+                    self.variant(DST_HWHS_POL_A::ACTIVE_LOW)
                 }
                 #[doc = r"Sets the field bit"]
                 #[inline(always)]
@@ -12442,7 +13510,7 @@ pub mod dmac {
             #[doc = "LLI master select"]
             pub type LMS_A = super::ctl::SMS_A;
             #[doc = "Reader of field `lms`"]
-            pub type LMS_R = crate::R<bool, super::ctl::SMS_A>;
+            pub type LMS_R = crate::R<bool, LMS_A>;
             #[doc = "Write proxy for field `lms`"]
             pub struct LMS_W<'a> {
                 w: &'a mut W,
@@ -12458,12 +13526,12 @@ pub mod dmac {
                 #[doc = "AXI master 1"]
                 #[inline(always)]
                 pub fn axi_master_1(self) -> &'a mut W {
-                    self.variant(super::ctl::SMS_A::AXI_MASTER_1)
+                    self.variant(LMS_A::AXI_MASTER_1)
                 }
                 #[doc = "AXI master 2"]
                 #[inline(always)]
                 pub fn axi_master_2(self) -> &'a mut W {
-                    self.variant(super::ctl::SMS_A::AXI_MASTER_2)
+                    self.variant(LMS_A::AXI_MASTER_2)
                 }
                 #[doc = r"Sets the field bit"]
                 #[inline(always)]
@@ -14896,7 +15964,8 @@ pub mod dmac {
                 }
             }
         }
-        #[doc = "Padding to make structure size 256 bytes so that channels\\[\\] is an array\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [_reserved](_reserved) module"]
+        #[doc = "Padding to make structure size 256 bytes so that channels\\[\\]
+is an array\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [_reserved](_reserved) module"]
         pub type _RESERVED = crate::Reg<u64, __RESERVED>;
         #[allow(missing_docs)]
         #[doc(hidden)]
@@ -14905,7 +15974,8 @@ pub mod dmac {
         impl crate::Readable for _RESERVED {}
         #[doc = "`write(|w| ..)` method takes [_reserved::W](_reserved::W) writer structure"]
         impl crate::Writable for _RESERVED {}
-        #[doc = "Padding to make structure size 256 bytes so that channels\\[\\] is an array"]
+        #[doc = "Padding to make structure size 256 bytes so that channels\\[\\]
+is an array"]
         pub mod _reserved {
             #[doc = "Reader of register _reserved"]
             pub type R = crate::R<u64, super::_RESERVED>;
@@ -15096,10 +16166,10 @@ pub mod dmac {
         }
         #[doc = "Reader of field `ch%s_en`"]
         pub type CH_EN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `ch%s_en`"]
+        #[doc = "Write proxy for fields `ch_en(1-6)`"]
         pub struct CH_EN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> CH_EN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -15115,17 +16185,17 @@ pub mod dmac {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u64) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u64) & 0x01) << self.offset);
                 self.w
             }
         }
         #[doc = "Reader of field `ch%s_en_we`"]
         pub type CH_EN_WE_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `ch%s_en_we`"]
+        #[doc = "Write proxy for fields `ch_en_we(1-6)`"]
         pub struct CH_EN_WE_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> CH_EN_WE_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -15141,17 +16211,17 @@ pub mod dmac {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u64) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u64) & 0x01) << self.offset);
                 self.w
             }
         }
         #[doc = "Reader of field `ch%s_susp`"]
         pub type CH_SUSP_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `ch%s_susp`"]
+        #[doc = "Write proxy for fields `ch_susp(1-6)`"]
         pub struct CH_SUSP_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> CH_SUSP_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -15167,17 +16237,17 @@ pub mod dmac {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u64) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u64) & 0x01) << self.offset);
                 self.w
             }
         }
         #[doc = "Reader of field `ch%s_susp_we`"]
         pub type CH_SUSP_WE_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `ch%s_susp_we`"]
+        #[doc = "Write proxy for fields `ch_susp_we(1-6)`"]
         pub struct CH_SUSP_WE_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> CH_SUSP_WE_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -15193,8 +16263,8 @@ pub mod dmac {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u64) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u64) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -15224,10 +16294,10 @@ pub mod dmac {
         }
         #[doc = "Reader of field `ch%s_abort_we`"]
         pub type CH_ABORT_WE_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `ch%s_abort_we`"]
+        #[doc = "Write proxy for fields `ch_abort_we(1-6)`"]
         pub struct CH_ABORT_WE_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> CH_ABORT_WE_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -15243,8 +16313,8 @@ pub mod dmac {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u64) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u64) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -15434,151 +16504,202 @@ pub mod dmac {
             #[doc = "Enable channel %s"]
             #[inline(always)]
             pub unsafe fn ch_en(&mut self, n: usize) -> CH_EN_W {
-                CH_EN_W { w: self, o: n - 1 }
+                CH_EN_W {
+                    w: self,
+                    offset: n - 1,
+                }
             }
             #[doc = "Bit 0 - Enable channel 1"]
             #[inline(always)]
             pub fn ch1_en(&mut self) -> CH_EN_W {
-                CH_EN_W { w: self, o: 0 }
+                CH_EN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1 - Enable channel 2"]
             #[inline(always)]
             pub fn ch2_en(&mut self) -> CH_EN_W {
-                CH_EN_W { w: self, o: 1 }
+                CH_EN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2 - Enable channel 3"]
             #[inline(always)]
             pub fn ch3_en(&mut self) -> CH_EN_W {
-                CH_EN_W { w: self, o: 2 }
+                CH_EN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3 - Enable channel 4"]
             #[inline(always)]
             pub fn ch4_en(&mut self) -> CH_EN_W {
-                CH_EN_W { w: self, o: 3 }
+                CH_EN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4 - Enable channel 5"]
             #[inline(always)]
             pub fn ch5_en(&mut self) -> CH_EN_W {
-                CH_EN_W { w: self, o: 4 }
+                CH_EN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5 - Enable channel 6"]
             #[inline(always)]
             pub fn ch6_en(&mut self) -> CH_EN_W {
-                CH_EN_W { w: self, o: 5 }
+                CH_EN_W { w: self, offset: 5 }
             }
             #[doc = "Write enable channel %s"]
             #[inline(always)]
             pub unsafe fn ch_en_we(&mut self, n: usize) -> CH_EN_WE_W {
                 CH_EN_WE_W {
                     w: self,
-                    o: n - 1 + 8,
+                    offset: n - 1 + 8,
                 }
             }
             #[doc = "Bit 8 - Write enable channel 1"]
             #[inline(always)]
             pub fn ch1_en_we(&mut self) -> CH_EN_WE_W {
-                CH_EN_WE_W { w: self, o: 8 }
+                CH_EN_WE_W { w: self, offset: 8 }
             }
             #[doc = "Bit 9 - Write enable channel 2"]
             #[inline(always)]
             pub fn ch2_en_we(&mut self) -> CH_EN_WE_W {
-                CH_EN_WE_W { w: self, o: 9 }
+                CH_EN_WE_W { w: self, offset: 9 }
             }
             #[doc = "Bit 10 - Write enable channel 3"]
             #[inline(always)]
             pub fn ch3_en_we(&mut self) -> CH_EN_WE_W {
-                CH_EN_WE_W { w: self, o: 10 }
+                CH_EN_WE_W {
+                    w: self,
+                    offset: 10,
+                }
             }
             #[doc = "Bit 11 - Write enable channel 4"]
             #[inline(always)]
             pub fn ch4_en_we(&mut self) -> CH_EN_WE_W {
-                CH_EN_WE_W { w: self, o: 11 }
+                CH_EN_WE_W {
+                    w: self,
+                    offset: 11,
+                }
             }
             #[doc = "Bit 12 - Write enable channel 5"]
             #[inline(always)]
             pub fn ch5_en_we(&mut self) -> CH_EN_WE_W {
-                CH_EN_WE_W { w: self, o: 12 }
+                CH_EN_WE_W {
+                    w: self,
+                    offset: 12,
+                }
             }
             #[doc = "Bit 13 - Write enable channel 6"]
             #[inline(always)]
             pub fn ch6_en_we(&mut self) -> CH_EN_WE_W {
-                CH_EN_WE_W { w: self, o: 13 }
+                CH_EN_WE_W {
+                    w: self,
+                    offset: 13,
+                }
             }
             #[doc = "Suspend request channel %s"]
             #[inline(always)]
             pub unsafe fn ch_susp(&mut self, n: usize) -> CH_SUSP_W {
                 CH_SUSP_W {
                     w: self,
-                    o: n - 1 + 16,
+                    offset: n - 1 + 16,
                 }
             }
             #[doc = "Bit 16 - Suspend request channel 1"]
             #[inline(always)]
             pub fn ch1_susp(&mut self) -> CH_SUSP_W {
-                CH_SUSP_W { w: self, o: 16 }
+                CH_SUSP_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bit 17 - Suspend request channel 2"]
             #[inline(always)]
             pub fn ch2_susp(&mut self) -> CH_SUSP_W {
-                CH_SUSP_W { w: self, o: 17 }
+                CH_SUSP_W {
+                    w: self,
+                    offset: 17,
+                }
             }
             #[doc = "Bit 18 - Suspend request channel 3"]
             #[inline(always)]
             pub fn ch3_susp(&mut self) -> CH_SUSP_W {
-                CH_SUSP_W { w: self, o: 18 }
+                CH_SUSP_W {
+                    w: self,
+                    offset: 18,
+                }
             }
             #[doc = "Bit 19 - Suspend request channel 4"]
             #[inline(always)]
             pub fn ch4_susp(&mut self) -> CH_SUSP_W {
-                CH_SUSP_W { w: self, o: 19 }
+                CH_SUSP_W {
+                    w: self,
+                    offset: 19,
+                }
             }
             #[doc = "Bit 20 - Suspend request channel 5"]
             #[inline(always)]
             pub fn ch5_susp(&mut self) -> CH_SUSP_W {
-                CH_SUSP_W { w: self, o: 20 }
+                CH_SUSP_W {
+                    w: self,
+                    offset: 20,
+                }
             }
             #[doc = "Bit 21 - Suspend request channel 6"]
             #[inline(always)]
             pub fn ch6_susp(&mut self) -> CH_SUSP_W {
-                CH_SUSP_W { w: self, o: 21 }
+                CH_SUSP_W {
+                    w: self,
+                    offset: 21,
+                }
             }
             #[doc = "Enable write to ch%s_susp bit"]
             #[inline(always)]
             pub unsafe fn ch_susp_we(&mut self, n: usize) -> CH_SUSP_WE_W {
                 CH_SUSP_WE_W {
                     w: self,
-                    o: n - 1 + 24,
+                    offset: n - 1 + 24,
                 }
             }
             #[doc = "Bit 24 - Enable write to ch1_susp bit"]
             #[inline(always)]
             pub fn ch1_susp_we(&mut self) -> CH_SUSP_WE_W {
-                CH_SUSP_WE_W { w: self, o: 24 }
+                CH_SUSP_WE_W {
+                    w: self,
+                    offset: 24,
+                }
             }
             #[doc = "Bit 25 - Enable write to ch2_susp bit"]
             #[inline(always)]
             pub fn ch2_susp_we(&mut self) -> CH_SUSP_WE_W {
-                CH_SUSP_WE_W { w: self, o: 25 }
+                CH_SUSP_WE_W {
+                    w: self,
+                    offset: 25,
+                }
             }
             #[doc = "Bit 26 - Enable write to ch3_susp bit"]
             #[inline(always)]
             pub fn ch3_susp_we(&mut self) -> CH_SUSP_WE_W {
-                CH_SUSP_WE_W { w: self, o: 26 }
+                CH_SUSP_WE_W {
+                    w: self,
+                    offset: 26,
+                }
             }
             #[doc = "Bit 27 - Enable write to ch4_susp bit"]
             #[inline(always)]
             pub fn ch4_susp_we(&mut self) -> CH_SUSP_WE_W {
-                CH_SUSP_WE_W { w: self, o: 27 }
+                CH_SUSP_WE_W {
+                    w: self,
+                    offset: 27,
+                }
             }
             #[doc = "Bit 28 - Enable write to ch5_susp bit"]
             #[inline(always)]
             pub fn ch5_susp_we(&mut self) -> CH_SUSP_WE_W {
-                CH_SUSP_WE_W { w: self, o: 28 }
+                CH_SUSP_WE_W {
+                    w: self,
+                    offset: 28,
+                }
             }
             #[doc = "Bit 29 - Enable write to ch6_susp bit"]
             #[inline(always)]
             pub fn ch6_susp_we(&mut self) -> CH_SUSP_WE_W {
-                CH_SUSP_WE_W { w: self, o: 29 }
+                CH_SUSP_WE_W {
+                    w: self,
+                    offset: 29,
+                }
             }
             #[doc = "Bit 32 - Abort request channel %s"]
             #[inline(always)]
@@ -15590,38 +16711,56 @@ pub mod dmac {
             pub unsafe fn ch_abort_we(&mut self, n: usize) -> CH_ABORT_WE_W {
                 CH_ABORT_WE_W {
                     w: self,
-                    o: n - 1 + 40,
+                    offset: n - 1 + 40,
                 }
             }
             #[doc = "Bit 40 - Enable write to ch1_abort bit"]
             #[inline(always)]
             pub fn ch1_abort_we(&mut self) -> CH_ABORT_WE_W {
-                CH_ABORT_WE_W { w: self, o: 40 }
+                CH_ABORT_WE_W {
+                    w: self,
+                    offset: 40,
+                }
             }
             #[doc = "Bit 41 - Enable write to ch2_abort bit"]
             #[inline(always)]
             pub fn ch2_abort_we(&mut self) -> CH_ABORT_WE_W {
-                CH_ABORT_WE_W { w: self, o: 41 }
+                CH_ABORT_WE_W {
+                    w: self,
+                    offset: 41,
+                }
             }
             #[doc = "Bit 42 - Enable write to ch3_abort bit"]
             #[inline(always)]
             pub fn ch3_abort_we(&mut self) -> CH_ABORT_WE_W {
-                CH_ABORT_WE_W { w: self, o: 42 }
+                CH_ABORT_WE_W {
+                    w: self,
+                    offset: 42,
+                }
             }
             #[doc = "Bit 43 - Enable write to ch4_abort bit"]
             #[inline(always)]
             pub fn ch4_abort_we(&mut self) -> CH_ABORT_WE_W {
-                CH_ABORT_WE_W { w: self, o: 43 }
+                CH_ABORT_WE_W {
+                    w: self,
+                    offset: 43,
+                }
             }
             #[doc = "Bit 44 - Enable write to ch5_abort bit"]
             #[inline(always)]
             pub fn ch5_abort_we(&mut self) -> CH_ABORT_WE_W {
-                CH_ABORT_WE_W { w: self, o: 44 }
+                CH_ABORT_WE_W {
+                    w: self,
+                    offset: 44,
+                }
             }
             #[doc = "Bit 45 - Enable write to ch6_abort bit"]
             #[inline(always)]
             pub fn ch6_abort_we(&mut self) -> CH_ABORT_WE_W {
-                CH_ABORT_WE_W { w: self, o: 45 }
+                CH_ABORT_WE_W {
+                    w: self,
+                    offset: 45,
+                }
             }
         }
     }
@@ -15650,10 +16789,10 @@ pub mod dmac {
         }
         #[doc = "Reader of field `ch%s_intstat`"]
         pub type CH_INTSTAT_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `ch%s_intstat`"]
+        #[doc = "Write proxy for fields `ch_intstat(1-6)`"]
         pub struct CH_INTSTAT_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> CH_INTSTAT_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -15669,8 +16808,8 @@ pub mod dmac {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u64) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u64) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -15744,37 +16883,40 @@ pub mod dmac {
             #[doc = "Channel %s interrupt bit"]
             #[inline(always)]
             pub unsafe fn ch_intstat(&mut self, n: usize) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: n - 1 }
+                CH_INTSTAT_W {
+                    w: self,
+                    offset: n - 1,
+                }
             }
             #[doc = "Bit 0 - Channel 1 interrupt bit"]
             #[inline(always)]
             pub fn ch1_intstat(&mut self) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: 0 }
+                CH_INTSTAT_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1 - Channel 2 interrupt bit"]
             #[inline(always)]
             pub fn ch2_intstat(&mut self) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: 1 }
+                CH_INTSTAT_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2 - Channel 3 interrupt bit"]
             #[inline(always)]
             pub fn ch3_intstat(&mut self) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: 2 }
+                CH_INTSTAT_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3 - Channel 4 interrupt bit"]
             #[inline(always)]
             pub fn ch4_intstat(&mut self) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: 3 }
+                CH_INTSTAT_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4 - Channel 5 interrupt bit"]
             #[inline(always)]
             pub fn ch5_intstat(&mut self) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: 4 }
+                CH_INTSTAT_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5 - Channel 6 interrupt bit"]
             #[inline(always)]
             pub fn ch6_intstat(&mut self) -> CH_INTSTAT_W {
-                CH_INTSTAT_W { w: self, o: 5 }
+                CH_INTSTAT_W { w: self, offset: 5 }
             }
             #[doc = "Bit 16 - Common register status bit"]
             #[inline(always)]
@@ -16720,10 +17862,10 @@ pub mod gpio {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-7)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -16739,8 +17881,8 @@ pub mod gpio {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -16795,47 +17937,47 @@ pub mod gpio {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
         }
     }
@@ -16898,10 +18040,10 @@ pub mod gpio {
                 *self == PIN_A::OUTPUT
             }
         }
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-7)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Writes `variant` to the field"]
@@ -16934,8 +18076,8 @@ pub mod gpio {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -16990,47 +18132,47 @@ pub mod gpio {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
         }
     }
@@ -17293,10 +18435,10 @@ pub mod gpio {
         }
         #[doc = "Reader of field `pin%s`"]
         pub type PIN_R = crate::R<bool, bool>;
-        #[doc = "Write proxy for field `pin%s`"]
+        #[doc = "Write proxy for fields `pin(0-7)`"]
         pub struct PIN_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> PIN_W<'a> {
             #[doc = r"Sets the field bit"]
@@ -17312,8 +18454,8 @@ pub mod gpio {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub fn bit(self, value: bool) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x01 << self.o)) | (((value as u32) & 0x01) << self.o);
+                self.w.bits = (self.w.bits & !(0x01 << self.offset))
+                    | (((value as u32) & 0x01) << self.offset);
                 self.w
             }
         }
@@ -17368,47 +18510,47 @@ pub mod gpio {
             #[doc = ""]
             #[inline(always)]
             pub unsafe fn pin(&mut self, n: usize) -> PIN_W {
-                PIN_W { w: self, o: n }
+                PIN_W { w: self, offset: n }
             }
             #[doc = "Bit 0"]
             #[inline(always)]
             pub fn pin0(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 0 }
+                PIN_W { w: self, offset: 0 }
             }
             #[doc = "Bit 1"]
             #[inline(always)]
             pub fn pin1(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 1 }
+                PIN_W { w: self, offset: 1 }
             }
             #[doc = "Bit 2"]
             #[inline(always)]
             pub fn pin2(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 2 }
+                PIN_W { w: self, offset: 2 }
             }
             #[doc = "Bit 3"]
             #[inline(always)]
             pub fn pin3(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 3 }
+                PIN_W { w: self, offset: 3 }
             }
             #[doc = "Bit 4"]
             #[inline(always)]
             pub fn pin4(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 4 }
+                PIN_W { w: self, offset: 4 }
             }
             #[doc = "Bit 5"]
             #[inline(always)]
             pub fn pin5(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 5 }
+                PIN_W { w: self, offset: 5 }
             }
             #[doc = "Bit 6"]
             #[inline(always)]
             pub fn pin6(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 6 }
+                PIN_W { w: self, offset: 6 }
             }
             #[doc = "Bit 7"]
             #[inline(always)]
             pub fn pin7(&mut self) -> PIN_W {
-                PIN_W { w: self, o: 7 }
+                PIN_W { w: self, offset: 7 }
             }
         }
     }
@@ -17869,7 +19011,8 @@ pub mod uart1 {
         pub type R = crate::R<u32, super::SRBR_STHR>;
         #[doc = "Writer for register srbr_sthr[%s]"]
         pub type W = crate::W<u32, super::SRBR_STHR>;
-        #[doc = "Register srbr_sthr[%s] `reset()`'s with value 0"]
+        #[doc = "Register srbr_sthr[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::SRBR_STHR {
             type Type = u32;
             #[inline(always)]
@@ -22159,7 +23302,7 @@ pub mod i2s0 {
             #[doc = "Desired data resolution of transmitter"]
             pub type WLEN_A = super::rcr::WLEN_A;
             #[doc = "Reader of field `wlen`"]
-            pub type WLEN_R = crate::R<u8, super::rcr::WLEN_A>;
+            pub type WLEN_R = crate::R<u8, WLEN_A>;
             #[doc = "Write proxy for field `wlen`"]
             pub struct WLEN_W<'a> {
                 w: &'a mut W,
@@ -22173,32 +23316,32 @@ pub mod i2s0 {
                 #[doc = "Ignore the word length"]
                 #[inline(always)]
                 pub fn ignore(self) -> &'a mut W {
-                    self.variant(super::rcr::WLEN_A::IGNORE)
+                    self.variant(WLEN_A::IGNORE)
                 }
                 #[doc = "12-bit data resolution of the receiver"]
                 #[inline(always)]
                 pub fn resolution12(self) -> &'a mut W {
-                    self.variant(super::rcr::WLEN_A::RESOLUTION12)
+                    self.variant(WLEN_A::RESOLUTION12)
                 }
                 #[doc = "16-bit data resolution of the receiver"]
                 #[inline(always)]
                 pub fn resolution16(self) -> &'a mut W {
-                    self.variant(super::rcr::WLEN_A::RESOLUTION16)
+                    self.variant(WLEN_A::RESOLUTION16)
                 }
                 #[doc = "20-bit data resolution of the receiver"]
                 #[inline(always)]
                 pub fn resolution20(self) -> &'a mut W {
-                    self.variant(super::rcr::WLEN_A::RESOLUTION20)
+                    self.variant(WLEN_A::RESOLUTION20)
                 }
                 #[doc = "24-bit data resolution of the receiver"]
                 #[inline(always)]
                 pub fn resolution24(self) -> &'a mut W {
-                    self.variant(super::rcr::WLEN_A::RESOLUTION24)
+                    self.variant(WLEN_A::RESOLUTION24)
                 }
                 #[doc = "32-bit data resolution of the receiver"]
                 #[inline(always)]
                 pub fn resolution32(self) -> &'a mut W {
-                    self.variant(super::rcr::WLEN_A::RESOLUTION32)
+                    self.variant(WLEN_A::RESOLUTION32)
                 }
                 #[doc = r"Writes raw bits to the field"]
                 #[inline(always)]
@@ -22783,7 +23926,7 @@ pub mod i2s0 {
             #[doc = "Trigger level in the TX FIFO at which the transmitter data available interrupt generate"]
             pub type TXCHET_A = super::rfcr::RXCHDT_A;
             #[doc = "Reader of field `txchet`"]
-            pub type TXCHET_R = crate::R<u8, super::rfcr::RXCHDT_A>;
+            pub type TXCHET_R = crate::R<u8, TXCHET_A>;
             #[doc = "Write proxy for field `txchet`"]
             pub struct TXCHET_W<'a> {
                 w: &'a mut W,
@@ -22799,82 +23942,82 @@ pub mod i2s0 {
                 #[doc = "Interrupt trigger when FIFO level is 1"]
                 #[inline(always)]
                 pub fn level1(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL1)
+                    self.variant(TXCHET_A::LEVEL1)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 2"]
                 #[inline(always)]
                 pub fn level2(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL2)
+                    self.variant(TXCHET_A::LEVEL2)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 3"]
                 #[inline(always)]
                 pub fn level3(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL3)
+                    self.variant(TXCHET_A::LEVEL3)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 4"]
                 #[inline(always)]
                 pub fn level4(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL4)
+                    self.variant(TXCHET_A::LEVEL4)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 5"]
                 #[inline(always)]
                 pub fn level5(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL5)
+                    self.variant(TXCHET_A::LEVEL5)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 6"]
                 #[inline(always)]
                 pub fn level6(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL6)
+                    self.variant(TXCHET_A::LEVEL6)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 7"]
                 #[inline(always)]
                 pub fn level7(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL7)
+                    self.variant(TXCHET_A::LEVEL7)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 8"]
                 #[inline(always)]
                 pub fn level8(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL8)
+                    self.variant(TXCHET_A::LEVEL8)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 9"]
                 #[inline(always)]
                 pub fn level9(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL9)
+                    self.variant(TXCHET_A::LEVEL9)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 10"]
                 #[inline(always)]
                 pub fn level10(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL10)
+                    self.variant(TXCHET_A::LEVEL10)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 11"]
                 #[inline(always)]
                 pub fn level11(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL11)
+                    self.variant(TXCHET_A::LEVEL11)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 12"]
                 #[inline(always)]
                 pub fn level12(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL12)
+                    self.variant(TXCHET_A::LEVEL12)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 13"]
                 #[inline(always)]
                 pub fn level13(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL13)
+                    self.variant(TXCHET_A::LEVEL13)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 14"]
                 #[inline(always)]
                 pub fn level14(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL14)
+                    self.variant(TXCHET_A::LEVEL14)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 15"]
                 #[inline(always)]
                 pub fn level15(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL15)
+                    self.variant(TXCHET_A::LEVEL15)
                 }
                 #[doc = "Interrupt trigger when FIFO level is 16"]
                 #[inline(always)]
                 pub fn level16(self) -> &'a mut W {
-                    self.variant(super::rfcr::RXCHDT_A::LEVEL16)
+                    self.variant(TXCHET_A::LEVEL16)
                 }
                 #[doc = r"Writes raw bits to the field"]
                 #[inline(always)]
@@ -23037,7 +24180,7 @@ pub mod i2s0 {
             #[doc = "Transmit channel FIFO reset"]
             pub type RTXCHFR_A = super::rff::RXCHFR_A;
             #[doc = "Reader of field `rtxchfr`"]
-            pub type RTXCHFR_R = crate::R<bool, super::rff::RXCHFR_A>;
+            pub type RTXCHFR_R = crate::R<bool, RTXCHFR_A>;
             #[doc = "Write proxy for field `rtxchfr`"]
             pub struct RTXCHFR_W<'a> {
                 w: &'a mut W,
@@ -23053,12 +24196,12 @@ pub mod i2s0 {
                 #[doc = "Not flush an individual FIFO"]
                 #[inline(always)]
                 pub fn not_flush(self) -> &'a mut W {
-                    self.variant(super::rff::RXCHFR_A::NOT_FLUSH)
+                    self.variant(RTXCHFR_A::NOT_FLUSH)
                 }
                 #[doc = "Flush an indiviadual FIFO"]
                 #[inline(always)]
                 pub fn flush(self) -> &'a mut W {
-                    self.variant(super::rff::RXCHFR_A::FLUSH)
+                    self.variant(RTXCHFR_A::FLUSH)
                 }
                 #[doc = r"Sets the field bit"]
                 #[inline(always)]
@@ -23963,7 +25106,7 @@ pub mod i2s0 {
         #[doc = "Transmitter FIFO reset"]
         pub type RXFFR_A = super::rxffr::RXFFR_A;
         #[doc = "Reader of field `rxffr`"]
-        pub type RXFFR_R = crate::R<bool, super::rxffr::RXFFR_A>;
+        pub type RXFFR_R = crate::R<bool, RXFFR_A>;
         #[doc = "Write proxy for field `rxffr`"]
         pub struct RXFFR_W<'a> {
             w: &'a mut W,
@@ -23979,12 +25122,12 @@ pub mod i2s0 {
             #[doc = "Not flush FIFO"]
             #[inline(always)]
             pub fn not_flush(self) -> &'a mut W {
-                self.variant(super::rxffr::RXFFR_A::NOT_FLUSH)
+                self.variant(RXFFR_A::NOT_FLUSH)
             }
             #[doc = "Flush FIFO"]
             #[inline(always)]
             pub fn flush(self) -> &'a mut W {
-                self.variant(super::rxffr::RXFFR_A::FLUSH)
+                self.variant(RXFFR_A::FLUSH)
             }
             #[doc = r"Sets the field bit"]
             #[inline(always)]
@@ -24872,7 +26015,8 @@ pub mod apu {
         pub type R = crate::R<u32, super::DIR_BIDX>;
         #[doc = "Writer for register dir_bidx[%s]"]
         pub type W = crate::W<u32, super::DIR_BIDX>;
-        #[doc = "Register dir_bidx[%s] `reset()`'s with value 0"]
+        #[doc = "Register dir_bidx[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::DIR_BIDX {
             type Type = u32;
             #[inline(always)]
@@ -24882,17 +26026,17 @@ pub mod apu {
         }
         #[doc = "Reader of field `rd_idx%s`"]
         pub type RD_IDX_R = crate::R<u8, u8>;
-        #[doc = "Write proxy for field `rd_idx%s`"]
+        #[doc = "Write proxy for fields `rd_idx(0-3)`"]
         pub struct RD_IDX_W<'a> {
             w: &'a mut W,
-            o: usize,
+            offset: usize,
         }
         impl<'a> RD_IDX_W<'a> {
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
             pub unsafe fn bits(self, value: u8) -> &'a mut W {
-                self.w.bits =
-                    (self.w.bits & !(0x3f << self.o)) | (((value as u32) & 0x3f) << self.o);
+                self.w.bits = (self.w.bits & !(0x3f << self.offset))
+                    | (((value as u32) & 0x3f) << self.offset);
                 self.w
             }
         }
@@ -24927,27 +26071,36 @@ pub mod apu {
             #[doc = "rd_idx%s"]
             #[inline(always)]
             pub unsafe fn rd_idx(&mut self, n: usize) -> RD_IDX_W {
-                RD_IDX_W { w: self, o: n * 8 }
+                RD_IDX_W {
+                    w: self,
+                    offset: n * 8,
+                }
             }
             #[doc = "Bits 0:5 - rd_idx0"]
             #[inline(always)]
             pub fn rd_idx0(&mut self) -> RD_IDX_W {
-                RD_IDX_W { w: self, o: 0 }
+                RD_IDX_W { w: self, offset: 0 }
             }
             #[doc = "Bits 8:13 - rd_idx1"]
             #[inline(always)]
             pub fn rd_idx1(&mut self) -> RD_IDX_W {
-                RD_IDX_W { w: self, o: 8 }
+                RD_IDX_W { w: self, offset: 8 }
             }
             #[doc = "Bits 16:21 - rd_idx2"]
             #[inline(always)]
             pub fn rd_idx2(&mut self) -> RD_IDX_W {
-                RD_IDX_W { w: self, o: 16 }
+                RD_IDX_W {
+                    w: self,
+                    offset: 16,
+                }
             }
             #[doc = "Bits 24:29 - rd_idx3"]
             #[inline(always)]
             pub fn rd_idx3(&mut self) -> RD_IDX_W {
-                RD_IDX_W { w: self, o: 24 }
+                RD_IDX_W {
+                    w: self,
+                    offset: 24,
+                }
             }
         }
     }
@@ -24966,7 +26119,8 @@ pub mod apu {
         pub type R = crate::R<u32, super::PRE_FIR0_COEF>;
         #[doc = "Writer for register pre_fir0_coef[%s]"]
         pub type W = crate::W<u32, super::PRE_FIR0_COEF>;
-        #[doc = "Register pre_fir0_coef[%s] `reset()`'s with value 0"]
+        #[doc = "Register pre_fir0_coef[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::PRE_FIR0_COEF {
             type Type = u32;
             #[inline(always)]
@@ -25042,7 +26196,8 @@ pub mod apu {
         pub type R = crate::R<u32, super::POST_FIR0_COEF>;
         #[doc = "Writer for register post_fir0_coef[%s]"]
         pub type W = crate::W<u32, super::POST_FIR0_COEF>;
-        #[doc = "Register post_fir0_coef[%s] `reset()`'s with value 0"]
+        #[doc = "Register post_fir0_coef[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::POST_FIR0_COEF {
             type Type = u32;
             #[inline(always)]
@@ -25118,7 +26273,8 @@ pub mod apu {
         pub type R = crate::R<u32, super::PRE_FIR1_COEF>;
         #[doc = "Writer for register pre_fir1_coef[%s]"]
         pub type W = crate::W<u32, super::PRE_FIR1_COEF>;
-        #[doc = "Register pre_fir1_coef[%s] `reset()`'s with value 0"]
+        #[doc = "Register pre_fir1_coef[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::PRE_FIR1_COEF {
             type Type = u32;
             #[inline(always)]
@@ -25194,7 +26350,8 @@ pub mod apu {
         pub type R = crate::R<u32, super::POST_FIR1_COEF>;
         #[doc = "Writer for register post_fir1_coef[%s]"]
         pub type W = crate::W<u32, super::POST_FIR1_COEF>;
-        #[doc = "Register post_fir1_coef[%s] `reset()`'s with value 0"]
+        #[doc = "Register post_fir1_coef[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::POST_FIR1_COEF {
             type Type = u32;
             #[inline(always)]
@@ -29622,7 +30779,8 @@ pub mod fpioa {
         pub type R = crate::R<u32, super::IO>;
         #[doc = "Writer for register io[%s]"]
         pub type W = crate::W<u32, super::IO>;
-        #[doc = "Register io[%s] `reset()`'s with value 0"]
+        #[doc = "Register io[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::IO {
             type Type = u32;
             #[inline(always)]
@@ -30106,7 +31264,8 @@ pub mod fpioa {
         pub type R = crate::R<u32, super::TIE_EN>;
         #[doc = "Writer for register tie_en[%s]"]
         pub type W = crate::W<u32, super::TIE_EN>;
-        #[doc = "Register tie_en[%s] `reset()`'s with value 0"]
+        #[doc = "Register tie_en[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::TIE_EN {
             type Type = u32;
             #[inline(always)]
@@ -30132,7 +31291,8 @@ pub mod fpioa {
         pub type R = crate::R<u32, super::TIE_VAL>;
         #[doc = "Writer for register tie_val[%s]"]
         pub type W = crate::W<u32, super::TIE_VAL>;
-        #[doc = "Register tie_val[%s] `reset()`'s with value 0"]
+        #[doc = "Register tie_val[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::TIE_VAL {
             type Type = u32;
             #[inline(always)]
@@ -30196,7 +31356,8 @@ pub mod sha256 {
         pub type R = crate::R<u32, super::RESULT>;
         #[doc = "Writer for register result[%s]"]
         pub type W = crate::W<u32, super::RESULT>;
-        #[doc = "Register result[%s] `reset()`'s with value 0"]
+        #[doc = "Register result[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::RESULT {
             type Type = u32;
             #[inline(always)]
@@ -40603,7 +41764,7 @@ pub mod sysctl {
         #[doc = ""]
         pub type DMA_SEL1_A = DMA_SEL0_A;
         #[doc = "Reader of field `dma_sel1`"]
-        pub type DMA_SEL1_R = crate::R<u8, DMA_SEL0_A>;
+        pub type DMA_SEL1_R = crate::R<u8, DMA_SEL1_A>;
         #[doc = "Write proxy for field `dma_sel1`"]
         pub struct DMA_SEL1_W<'a> {
             w: &'a mut W,
@@ -40617,167 +41778,167 @@ pub mod sysctl {
             #[doc = "`0`"]
             #[inline(always)]
             pub fn ssi0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_RX_REQ)
+                self.variant(DMA_SEL1_A::SSI0_RX_REQ)
             }
             #[doc = "`1`"]
             #[inline(always)]
             pub fn ssi0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_TX_REQ)
+                self.variant(DMA_SEL1_A::SSI0_TX_REQ)
             }
             #[doc = "`10`"]
             #[inline(always)]
             pub fn ssi1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_RX_REQ)
+                self.variant(DMA_SEL1_A::SSI1_RX_REQ)
             }
             #[doc = "`11`"]
             #[inline(always)]
             pub fn ssi1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_TX_REQ)
+                self.variant(DMA_SEL1_A::SSI1_TX_REQ)
             }
             #[doc = "`100`"]
             #[inline(always)]
             pub fn ssi2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_RX_REQ)
+                self.variant(DMA_SEL1_A::SSI2_RX_REQ)
             }
             #[doc = "`101`"]
             #[inline(always)]
             pub fn ssi2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_TX_REQ)
+                self.variant(DMA_SEL1_A::SSI2_TX_REQ)
             }
             #[doc = "`110`"]
             #[inline(always)]
             pub fn ssi3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_RX_REQ)
+                self.variant(DMA_SEL1_A::SSI3_RX_REQ)
             }
             #[doc = "`111`"]
             #[inline(always)]
             pub fn ssi3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_TX_REQ)
+                self.variant(DMA_SEL1_A::SSI3_TX_REQ)
             }
             #[doc = "`1000`"]
             #[inline(always)]
             pub fn i2c0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_RX_REQ)
+                self.variant(DMA_SEL1_A::I2C0_RX_REQ)
             }
             #[doc = "`1001`"]
             #[inline(always)]
             pub fn i2c0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_TX_REQ)
+                self.variant(DMA_SEL1_A::I2C0_TX_REQ)
             }
             #[doc = "`1010`"]
             #[inline(always)]
             pub fn i2c1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_RX_REQ)
+                self.variant(DMA_SEL1_A::I2C1_RX_REQ)
             }
             #[doc = "`1011`"]
             #[inline(always)]
             pub fn i2c1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_TX_REQ)
+                self.variant(DMA_SEL1_A::I2C1_TX_REQ)
             }
             #[doc = "`1100`"]
             #[inline(always)]
             pub fn i2c2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_RX_REQ)
+                self.variant(DMA_SEL1_A::I2C2_RX_REQ)
             }
             #[doc = "`1101`"]
             #[inline(always)]
             pub fn i2c2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_TX_REQ)
+                self.variant(DMA_SEL1_A::I2C2_TX_REQ)
             }
             #[doc = "`1110`"]
             #[inline(always)]
             pub fn uart1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_RX_REQ)
+                self.variant(DMA_SEL1_A::UART1_RX_REQ)
             }
             #[doc = "`1111`"]
             #[inline(always)]
             pub fn uart1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_TX_REQ)
+                self.variant(DMA_SEL1_A::UART1_TX_REQ)
             }
             #[doc = "`10000`"]
             #[inline(always)]
             pub fn uart2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_RX_REQ)
+                self.variant(DMA_SEL1_A::UART2_RX_REQ)
             }
             #[doc = "`10001`"]
             #[inline(always)]
             pub fn uart2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_TX_REQ)
+                self.variant(DMA_SEL1_A::UART2_TX_REQ)
             }
             #[doc = "`10010`"]
             #[inline(always)]
             pub fn uart3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_RX_REQ)
+                self.variant(DMA_SEL1_A::UART3_RX_REQ)
             }
             #[doc = "`10011`"]
             #[inline(always)]
             pub fn uart3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_TX_REQ)
+                self.variant(DMA_SEL1_A::UART3_TX_REQ)
             }
             #[doc = "`10100`"]
             #[inline(always)]
             pub fn aes_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AES_REQ)
+                self.variant(DMA_SEL1_A::AES_REQ)
             }
             #[doc = "`10101`"]
             #[inline(always)]
             pub fn sha_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SHA_RX_REQ)
+                self.variant(DMA_SEL1_A::SHA_RX_REQ)
             }
             #[doc = "`10110`"]
             #[inline(always)]
             pub fn ai_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AI_RX_REQ)
+                self.variant(DMA_SEL1_A::AI_RX_REQ)
             }
             #[doc = "`10111`"]
             #[inline(always)]
             pub fn fft_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_RX_REQ)
+                self.variant(DMA_SEL1_A::FFT_RX_REQ)
             }
             #[doc = "`11000`"]
             #[inline(always)]
             pub fn fft_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_TX_REQ)
+                self.variant(DMA_SEL1_A::FFT_TX_REQ)
             }
             #[doc = "`11001`"]
             #[inline(always)]
             pub fn i2s0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_TX_REQ)
+                self.variant(DMA_SEL1_A::I2S0_TX_REQ)
             }
             #[doc = "`11010`"]
             #[inline(always)]
             pub fn i2s0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_RX_REQ)
+                self.variant(DMA_SEL1_A::I2S0_RX_REQ)
             }
             #[doc = "`11011`"]
             #[inline(always)]
             pub fn i2s1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_TX_REQ)
+                self.variant(DMA_SEL1_A::I2S1_TX_REQ)
             }
             #[doc = "`11100`"]
             #[inline(always)]
             pub fn i2s1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_RX_REQ)
+                self.variant(DMA_SEL1_A::I2S1_RX_REQ)
             }
             #[doc = "`11101`"]
             #[inline(always)]
             pub fn i2s2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_TX_REQ)
+                self.variant(DMA_SEL1_A::I2S2_TX_REQ)
             }
             #[doc = "`11110`"]
             #[inline(always)]
             pub fn i2s2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_RX_REQ)
+                self.variant(DMA_SEL1_A::I2S2_RX_REQ)
             }
             #[doc = "`11111`"]
             #[inline(always)]
             pub fn i2s0_bf_dir_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_DIR_REQ)
+                self.variant(DMA_SEL1_A::I2S0_BF_DIR_REQ)
             }
             #[doc = "`100000`"]
             #[inline(always)]
             pub fn i2s0_bf_voice_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_VOICE_REQ)
+                self.variant(DMA_SEL1_A::I2S0_BF_VOICE_REQ)
             }
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
@@ -40789,7 +41950,7 @@ pub mod sysctl {
         #[doc = ""]
         pub type DMA_SEL2_A = DMA_SEL0_A;
         #[doc = "Reader of field `dma_sel2`"]
-        pub type DMA_SEL2_R = crate::R<u8, DMA_SEL0_A>;
+        pub type DMA_SEL2_R = crate::R<u8, DMA_SEL2_A>;
         #[doc = "Write proxy for field `dma_sel2`"]
         pub struct DMA_SEL2_W<'a> {
             w: &'a mut W,
@@ -40803,167 +41964,167 @@ pub mod sysctl {
             #[doc = "`0`"]
             #[inline(always)]
             pub fn ssi0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_RX_REQ)
+                self.variant(DMA_SEL2_A::SSI0_RX_REQ)
             }
             #[doc = "`1`"]
             #[inline(always)]
             pub fn ssi0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_TX_REQ)
+                self.variant(DMA_SEL2_A::SSI0_TX_REQ)
             }
             #[doc = "`10`"]
             #[inline(always)]
             pub fn ssi1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_RX_REQ)
+                self.variant(DMA_SEL2_A::SSI1_RX_REQ)
             }
             #[doc = "`11`"]
             #[inline(always)]
             pub fn ssi1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_TX_REQ)
+                self.variant(DMA_SEL2_A::SSI1_TX_REQ)
             }
             #[doc = "`100`"]
             #[inline(always)]
             pub fn ssi2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_RX_REQ)
+                self.variant(DMA_SEL2_A::SSI2_RX_REQ)
             }
             #[doc = "`101`"]
             #[inline(always)]
             pub fn ssi2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_TX_REQ)
+                self.variant(DMA_SEL2_A::SSI2_TX_REQ)
             }
             #[doc = "`110`"]
             #[inline(always)]
             pub fn ssi3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_RX_REQ)
+                self.variant(DMA_SEL2_A::SSI3_RX_REQ)
             }
             #[doc = "`111`"]
             #[inline(always)]
             pub fn ssi3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_TX_REQ)
+                self.variant(DMA_SEL2_A::SSI3_TX_REQ)
             }
             #[doc = "`1000`"]
             #[inline(always)]
             pub fn i2c0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_RX_REQ)
+                self.variant(DMA_SEL2_A::I2C0_RX_REQ)
             }
             #[doc = "`1001`"]
             #[inline(always)]
             pub fn i2c0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_TX_REQ)
+                self.variant(DMA_SEL2_A::I2C0_TX_REQ)
             }
             #[doc = "`1010`"]
             #[inline(always)]
             pub fn i2c1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_RX_REQ)
+                self.variant(DMA_SEL2_A::I2C1_RX_REQ)
             }
             #[doc = "`1011`"]
             #[inline(always)]
             pub fn i2c1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_TX_REQ)
+                self.variant(DMA_SEL2_A::I2C1_TX_REQ)
             }
             #[doc = "`1100`"]
             #[inline(always)]
             pub fn i2c2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_RX_REQ)
+                self.variant(DMA_SEL2_A::I2C2_RX_REQ)
             }
             #[doc = "`1101`"]
             #[inline(always)]
             pub fn i2c2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_TX_REQ)
+                self.variant(DMA_SEL2_A::I2C2_TX_REQ)
             }
             #[doc = "`1110`"]
             #[inline(always)]
             pub fn uart1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_RX_REQ)
+                self.variant(DMA_SEL2_A::UART1_RX_REQ)
             }
             #[doc = "`1111`"]
             #[inline(always)]
             pub fn uart1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_TX_REQ)
+                self.variant(DMA_SEL2_A::UART1_TX_REQ)
             }
             #[doc = "`10000`"]
             #[inline(always)]
             pub fn uart2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_RX_REQ)
+                self.variant(DMA_SEL2_A::UART2_RX_REQ)
             }
             #[doc = "`10001`"]
             #[inline(always)]
             pub fn uart2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_TX_REQ)
+                self.variant(DMA_SEL2_A::UART2_TX_REQ)
             }
             #[doc = "`10010`"]
             #[inline(always)]
             pub fn uart3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_RX_REQ)
+                self.variant(DMA_SEL2_A::UART3_RX_REQ)
             }
             #[doc = "`10011`"]
             #[inline(always)]
             pub fn uart3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_TX_REQ)
+                self.variant(DMA_SEL2_A::UART3_TX_REQ)
             }
             #[doc = "`10100`"]
             #[inline(always)]
             pub fn aes_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AES_REQ)
+                self.variant(DMA_SEL2_A::AES_REQ)
             }
             #[doc = "`10101`"]
             #[inline(always)]
             pub fn sha_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SHA_RX_REQ)
+                self.variant(DMA_SEL2_A::SHA_RX_REQ)
             }
             #[doc = "`10110`"]
             #[inline(always)]
             pub fn ai_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AI_RX_REQ)
+                self.variant(DMA_SEL2_A::AI_RX_REQ)
             }
             #[doc = "`10111`"]
             #[inline(always)]
             pub fn fft_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_RX_REQ)
+                self.variant(DMA_SEL2_A::FFT_RX_REQ)
             }
             #[doc = "`11000`"]
             #[inline(always)]
             pub fn fft_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_TX_REQ)
+                self.variant(DMA_SEL2_A::FFT_TX_REQ)
             }
             #[doc = "`11001`"]
             #[inline(always)]
             pub fn i2s0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_TX_REQ)
+                self.variant(DMA_SEL2_A::I2S0_TX_REQ)
             }
             #[doc = "`11010`"]
             #[inline(always)]
             pub fn i2s0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_RX_REQ)
+                self.variant(DMA_SEL2_A::I2S0_RX_REQ)
             }
             #[doc = "`11011`"]
             #[inline(always)]
             pub fn i2s1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_TX_REQ)
+                self.variant(DMA_SEL2_A::I2S1_TX_REQ)
             }
             #[doc = "`11100`"]
             #[inline(always)]
             pub fn i2s1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_RX_REQ)
+                self.variant(DMA_SEL2_A::I2S1_RX_REQ)
             }
             #[doc = "`11101`"]
             #[inline(always)]
             pub fn i2s2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_TX_REQ)
+                self.variant(DMA_SEL2_A::I2S2_TX_REQ)
             }
             #[doc = "`11110`"]
             #[inline(always)]
             pub fn i2s2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_RX_REQ)
+                self.variant(DMA_SEL2_A::I2S2_RX_REQ)
             }
             #[doc = "`11111`"]
             #[inline(always)]
             pub fn i2s0_bf_dir_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_DIR_REQ)
+                self.variant(DMA_SEL2_A::I2S0_BF_DIR_REQ)
             }
             #[doc = "`100000`"]
             #[inline(always)]
             pub fn i2s0_bf_voice_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_VOICE_REQ)
+                self.variant(DMA_SEL2_A::I2S0_BF_VOICE_REQ)
             }
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
@@ -40975,7 +42136,7 @@ pub mod sysctl {
         #[doc = ""]
         pub type DMA_SEL3_A = DMA_SEL0_A;
         #[doc = "Reader of field `dma_sel3`"]
-        pub type DMA_SEL3_R = crate::R<u8, DMA_SEL0_A>;
+        pub type DMA_SEL3_R = crate::R<u8, DMA_SEL3_A>;
         #[doc = "Write proxy for field `dma_sel3`"]
         pub struct DMA_SEL3_W<'a> {
             w: &'a mut W,
@@ -40989,167 +42150,167 @@ pub mod sysctl {
             #[doc = "`0`"]
             #[inline(always)]
             pub fn ssi0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_RX_REQ)
+                self.variant(DMA_SEL3_A::SSI0_RX_REQ)
             }
             #[doc = "`1`"]
             #[inline(always)]
             pub fn ssi0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_TX_REQ)
+                self.variant(DMA_SEL3_A::SSI0_TX_REQ)
             }
             #[doc = "`10`"]
             #[inline(always)]
             pub fn ssi1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_RX_REQ)
+                self.variant(DMA_SEL3_A::SSI1_RX_REQ)
             }
             #[doc = "`11`"]
             #[inline(always)]
             pub fn ssi1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_TX_REQ)
+                self.variant(DMA_SEL3_A::SSI1_TX_REQ)
             }
             #[doc = "`100`"]
             #[inline(always)]
             pub fn ssi2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_RX_REQ)
+                self.variant(DMA_SEL3_A::SSI2_RX_REQ)
             }
             #[doc = "`101`"]
             #[inline(always)]
             pub fn ssi2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_TX_REQ)
+                self.variant(DMA_SEL3_A::SSI2_TX_REQ)
             }
             #[doc = "`110`"]
             #[inline(always)]
             pub fn ssi3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_RX_REQ)
+                self.variant(DMA_SEL3_A::SSI3_RX_REQ)
             }
             #[doc = "`111`"]
             #[inline(always)]
             pub fn ssi3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_TX_REQ)
+                self.variant(DMA_SEL3_A::SSI3_TX_REQ)
             }
             #[doc = "`1000`"]
             #[inline(always)]
             pub fn i2c0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_RX_REQ)
+                self.variant(DMA_SEL3_A::I2C0_RX_REQ)
             }
             #[doc = "`1001`"]
             #[inline(always)]
             pub fn i2c0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_TX_REQ)
+                self.variant(DMA_SEL3_A::I2C0_TX_REQ)
             }
             #[doc = "`1010`"]
             #[inline(always)]
             pub fn i2c1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_RX_REQ)
+                self.variant(DMA_SEL3_A::I2C1_RX_REQ)
             }
             #[doc = "`1011`"]
             #[inline(always)]
             pub fn i2c1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_TX_REQ)
+                self.variant(DMA_SEL3_A::I2C1_TX_REQ)
             }
             #[doc = "`1100`"]
             #[inline(always)]
             pub fn i2c2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_RX_REQ)
+                self.variant(DMA_SEL3_A::I2C2_RX_REQ)
             }
             #[doc = "`1101`"]
             #[inline(always)]
             pub fn i2c2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_TX_REQ)
+                self.variant(DMA_SEL3_A::I2C2_TX_REQ)
             }
             #[doc = "`1110`"]
             #[inline(always)]
             pub fn uart1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_RX_REQ)
+                self.variant(DMA_SEL3_A::UART1_RX_REQ)
             }
             #[doc = "`1111`"]
             #[inline(always)]
             pub fn uart1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_TX_REQ)
+                self.variant(DMA_SEL3_A::UART1_TX_REQ)
             }
             #[doc = "`10000`"]
             #[inline(always)]
             pub fn uart2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_RX_REQ)
+                self.variant(DMA_SEL3_A::UART2_RX_REQ)
             }
             #[doc = "`10001`"]
             #[inline(always)]
             pub fn uart2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_TX_REQ)
+                self.variant(DMA_SEL3_A::UART2_TX_REQ)
             }
             #[doc = "`10010`"]
             #[inline(always)]
             pub fn uart3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_RX_REQ)
+                self.variant(DMA_SEL3_A::UART3_RX_REQ)
             }
             #[doc = "`10011`"]
             #[inline(always)]
             pub fn uart3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_TX_REQ)
+                self.variant(DMA_SEL3_A::UART3_TX_REQ)
             }
             #[doc = "`10100`"]
             #[inline(always)]
             pub fn aes_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AES_REQ)
+                self.variant(DMA_SEL3_A::AES_REQ)
             }
             #[doc = "`10101`"]
             #[inline(always)]
             pub fn sha_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SHA_RX_REQ)
+                self.variant(DMA_SEL3_A::SHA_RX_REQ)
             }
             #[doc = "`10110`"]
             #[inline(always)]
             pub fn ai_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AI_RX_REQ)
+                self.variant(DMA_SEL3_A::AI_RX_REQ)
             }
             #[doc = "`10111`"]
             #[inline(always)]
             pub fn fft_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_RX_REQ)
+                self.variant(DMA_SEL3_A::FFT_RX_REQ)
             }
             #[doc = "`11000`"]
             #[inline(always)]
             pub fn fft_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_TX_REQ)
+                self.variant(DMA_SEL3_A::FFT_TX_REQ)
             }
             #[doc = "`11001`"]
             #[inline(always)]
             pub fn i2s0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_TX_REQ)
+                self.variant(DMA_SEL3_A::I2S0_TX_REQ)
             }
             #[doc = "`11010`"]
             #[inline(always)]
             pub fn i2s0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_RX_REQ)
+                self.variant(DMA_SEL3_A::I2S0_RX_REQ)
             }
             #[doc = "`11011`"]
             #[inline(always)]
             pub fn i2s1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_TX_REQ)
+                self.variant(DMA_SEL3_A::I2S1_TX_REQ)
             }
             #[doc = "`11100`"]
             #[inline(always)]
             pub fn i2s1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_RX_REQ)
+                self.variant(DMA_SEL3_A::I2S1_RX_REQ)
             }
             #[doc = "`11101`"]
             #[inline(always)]
             pub fn i2s2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_TX_REQ)
+                self.variant(DMA_SEL3_A::I2S2_TX_REQ)
             }
             #[doc = "`11110`"]
             #[inline(always)]
             pub fn i2s2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_RX_REQ)
+                self.variant(DMA_SEL3_A::I2S2_RX_REQ)
             }
             #[doc = "`11111`"]
             #[inline(always)]
             pub fn i2s0_bf_dir_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_DIR_REQ)
+                self.variant(DMA_SEL3_A::I2S0_BF_DIR_REQ)
             }
             #[doc = "`100000`"]
             #[inline(always)]
             pub fn i2s0_bf_voice_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_VOICE_REQ)
+                self.variant(DMA_SEL3_A::I2S0_BF_VOICE_REQ)
             }
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
@@ -41161,7 +42322,7 @@ pub mod sysctl {
         #[doc = ""]
         pub type DMA_SEL4_A = DMA_SEL0_A;
         #[doc = "Reader of field `dma_sel4`"]
-        pub type DMA_SEL4_R = crate::R<u8, DMA_SEL0_A>;
+        pub type DMA_SEL4_R = crate::R<u8, DMA_SEL4_A>;
         #[doc = "Write proxy for field `dma_sel4`"]
         pub struct DMA_SEL4_W<'a> {
             w: &'a mut W,
@@ -41175,167 +42336,167 @@ pub mod sysctl {
             #[doc = "`0`"]
             #[inline(always)]
             pub fn ssi0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_RX_REQ)
+                self.variant(DMA_SEL4_A::SSI0_RX_REQ)
             }
             #[doc = "`1`"]
             #[inline(always)]
             pub fn ssi0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI0_TX_REQ)
+                self.variant(DMA_SEL4_A::SSI0_TX_REQ)
             }
             #[doc = "`10`"]
             #[inline(always)]
             pub fn ssi1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_RX_REQ)
+                self.variant(DMA_SEL4_A::SSI1_RX_REQ)
             }
             #[doc = "`11`"]
             #[inline(always)]
             pub fn ssi1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI1_TX_REQ)
+                self.variant(DMA_SEL4_A::SSI1_TX_REQ)
             }
             #[doc = "`100`"]
             #[inline(always)]
             pub fn ssi2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_RX_REQ)
+                self.variant(DMA_SEL4_A::SSI2_RX_REQ)
             }
             #[doc = "`101`"]
             #[inline(always)]
             pub fn ssi2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI2_TX_REQ)
+                self.variant(DMA_SEL4_A::SSI2_TX_REQ)
             }
             #[doc = "`110`"]
             #[inline(always)]
             pub fn ssi3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_RX_REQ)
+                self.variant(DMA_SEL4_A::SSI3_RX_REQ)
             }
             #[doc = "`111`"]
             #[inline(always)]
             pub fn ssi3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SSI3_TX_REQ)
+                self.variant(DMA_SEL4_A::SSI3_TX_REQ)
             }
             #[doc = "`1000`"]
             #[inline(always)]
             pub fn i2c0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_RX_REQ)
+                self.variant(DMA_SEL4_A::I2C0_RX_REQ)
             }
             #[doc = "`1001`"]
             #[inline(always)]
             pub fn i2c0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C0_TX_REQ)
+                self.variant(DMA_SEL4_A::I2C0_TX_REQ)
             }
             #[doc = "`1010`"]
             #[inline(always)]
             pub fn i2c1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_RX_REQ)
+                self.variant(DMA_SEL4_A::I2C1_RX_REQ)
             }
             #[doc = "`1011`"]
             #[inline(always)]
             pub fn i2c1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C1_TX_REQ)
+                self.variant(DMA_SEL4_A::I2C1_TX_REQ)
             }
             #[doc = "`1100`"]
             #[inline(always)]
             pub fn i2c2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_RX_REQ)
+                self.variant(DMA_SEL4_A::I2C2_RX_REQ)
             }
             #[doc = "`1101`"]
             #[inline(always)]
             pub fn i2c2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2C2_TX_REQ)
+                self.variant(DMA_SEL4_A::I2C2_TX_REQ)
             }
             #[doc = "`1110`"]
             #[inline(always)]
             pub fn uart1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_RX_REQ)
+                self.variant(DMA_SEL4_A::UART1_RX_REQ)
             }
             #[doc = "`1111`"]
             #[inline(always)]
             pub fn uart1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART1_TX_REQ)
+                self.variant(DMA_SEL4_A::UART1_TX_REQ)
             }
             #[doc = "`10000`"]
             #[inline(always)]
             pub fn uart2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_RX_REQ)
+                self.variant(DMA_SEL4_A::UART2_RX_REQ)
             }
             #[doc = "`10001`"]
             #[inline(always)]
             pub fn uart2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART2_TX_REQ)
+                self.variant(DMA_SEL4_A::UART2_TX_REQ)
             }
             #[doc = "`10010`"]
             #[inline(always)]
             pub fn uart3_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_RX_REQ)
+                self.variant(DMA_SEL4_A::UART3_RX_REQ)
             }
             #[doc = "`10011`"]
             #[inline(always)]
             pub fn uart3_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::UART3_TX_REQ)
+                self.variant(DMA_SEL4_A::UART3_TX_REQ)
             }
             #[doc = "`10100`"]
             #[inline(always)]
             pub fn aes_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AES_REQ)
+                self.variant(DMA_SEL4_A::AES_REQ)
             }
             #[doc = "`10101`"]
             #[inline(always)]
             pub fn sha_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::SHA_RX_REQ)
+                self.variant(DMA_SEL4_A::SHA_RX_REQ)
             }
             #[doc = "`10110`"]
             #[inline(always)]
             pub fn ai_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::AI_RX_REQ)
+                self.variant(DMA_SEL4_A::AI_RX_REQ)
             }
             #[doc = "`10111`"]
             #[inline(always)]
             pub fn fft_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_RX_REQ)
+                self.variant(DMA_SEL4_A::FFT_RX_REQ)
             }
             #[doc = "`11000`"]
             #[inline(always)]
             pub fn fft_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::FFT_TX_REQ)
+                self.variant(DMA_SEL4_A::FFT_TX_REQ)
             }
             #[doc = "`11001`"]
             #[inline(always)]
             pub fn i2s0_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_TX_REQ)
+                self.variant(DMA_SEL4_A::I2S0_TX_REQ)
             }
             #[doc = "`11010`"]
             #[inline(always)]
             pub fn i2s0_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_RX_REQ)
+                self.variant(DMA_SEL4_A::I2S0_RX_REQ)
             }
             #[doc = "`11011`"]
             #[inline(always)]
             pub fn i2s1_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_TX_REQ)
+                self.variant(DMA_SEL4_A::I2S1_TX_REQ)
             }
             #[doc = "`11100`"]
             #[inline(always)]
             pub fn i2s1_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S1_RX_REQ)
+                self.variant(DMA_SEL4_A::I2S1_RX_REQ)
             }
             #[doc = "`11101`"]
             #[inline(always)]
             pub fn i2s2_tx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_TX_REQ)
+                self.variant(DMA_SEL4_A::I2S2_TX_REQ)
             }
             #[doc = "`11110`"]
             #[inline(always)]
             pub fn i2s2_rx_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S2_RX_REQ)
+                self.variant(DMA_SEL4_A::I2S2_RX_REQ)
             }
             #[doc = "`11111`"]
             #[inline(always)]
             pub fn i2s0_bf_dir_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_DIR_REQ)
+                self.variant(DMA_SEL4_A::I2S0_BF_DIR_REQ)
             }
             #[doc = "`100000`"]
             #[inline(always)]
             pub fn i2s0_bf_voice_req(self) -> &'a mut W {
-                self.variant(DMA_SEL0_A::I2S0_BF_VOICE_REQ)
+                self.variant(DMA_SEL4_A::I2S0_BF_VOICE_REQ)
             }
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
@@ -41425,7 +42586,7 @@ pub mod sysctl {
         #[doc = ""]
         pub type DMA_SEL5_A = super::dma_sel0::DMA_SEL0_A;
         #[doc = "Reader of field `dma_sel5`"]
-        pub type DMA_SEL5_R = crate::R<u8, super::dma_sel0::DMA_SEL0_A>;
+        pub type DMA_SEL5_R = crate::R<u8, DMA_SEL5_A>;
         #[doc = "Write proxy for field `dma_sel5`"]
         pub struct DMA_SEL5_W<'a> {
             w: &'a mut W,
@@ -41439,167 +42600,167 @@ pub mod sysctl {
             #[doc = "`0`"]
             #[inline(always)]
             pub fn ssi0_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI0_RX_REQ)
+                self.variant(DMA_SEL5_A::SSI0_RX_REQ)
             }
             #[doc = "`1`"]
             #[inline(always)]
             pub fn ssi0_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI0_TX_REQ)
+                self.variant(DMA_SEL5_A::SSI0_TX_REQ)
             }
             #[doc = "`10`"]
             #[inline(always)]
             pub fn ssi1_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI1_RX_REQ)
+                self.variant(DMA_SEL5_A::SSI1_RX_REQ)
             }
             #[doc = "`11`"]
             #[inline(always)]
             pub fn ssi1_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI1_TX_REQ)
+                self.variant(DMA_SEL5_A::SSI1_TX_REQ)
             }
             #[doc = "`100`"]
             #[inline(always)]
             pub fn ssi2_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI2_RX_REQ)
+                self.variant(DMA_SEL5_A::SSI2_RX_REQ)
             }
             #[doc = "`101`"]
             #[inline(always)]
             pub fn ssi2_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI2_TX_REQ)
+                self.variant(DMA_SEL5_A::SSI2_TX_REQ)
             }
             #[doc = "`110`"]
             #[inline(always)]
             pub fn ssi3_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI3_RX_REQ)
+                self.variant(DMA_SEL5_A::SSI3_RX_REQ)
             }
             #[doc = "`111`"]
             #[inline(always)]
             pub fn ssi3_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SSI3_TX_REQ)
+                self.variant(DMA_SEL5_A::SSI3_TX_REQ)
             }
             #[doc = "`1000`"]
             #[inline(always)]
             pub fn i2c0_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2C0_RX_REQ)
+                self.variant(DMA_SEL5_A::I2C0_RX_REQ)
             }
             #[doc = "`1001`"]
             #[inline(always)]
             pub fn i2c0_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2C0_TX_REQ)
+                self.variant(DMA_SEL5_A::I2C0_TX_REQ)
             }
             #[doc = "`1010`"]
             #[inline(always)]
             pub fn i2c1_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2C1_RX_REQ)
+                self.variant(DMA_SEL5_A::I2C1_RX_REQ)
             }
             #[doc = "`1011`"]
             #[inline(always)]
             pub fn i2c1_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2C1_TX_REQ)
+                self.variant(DMA_SEL5_A::I2C1_TX_REQ)
             }
             #[doc = "`1100`"]
             #[inline(always)]
             pub fn i2c2_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2C2_RX_REQ)
+                self.variant(DMA_SEL5_A::I2C2_RX_REQ)
             }
             #[doc = "`1101`"]
             #[inline(always)]
             pub fn i2c2_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2C2_TX_REQ)
+                self.variant(DMA_SEL5_A::I2C2_TX_REQ)
             }
             #[doc = "`1110`"]
             #[inline(always)]
             pub fn uart1_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::UART1_RX_REQ)
+                self.variant(DMA_SEL5_A::UART1_RX_REQ)
             }
             #[doc = "`1111`"]
             #[inline(always)]
             pub fn uart1_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::UART1_TX_REQ)
+                self.variant(DMA_SEL5_A::UART1_TX_REQ)
             }
             #[doc = "`10000`"]
             #[inline(always)]
             pub fn uart2_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::UART2_RX_REQ)
+                self.variant(DMA_SEL5_A::UART2_RX_REQ)
             }
             #[doc = "`10001`"]
             #[inline(always)]
             pub fn uart2_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::UART2_TX_REQ)
+                self.variant(DMA_SEL5_A::UART2_TX_REQ)
             }
             #[doc = "`10010`"]
             #[inline(always)]
             pub fn uart3_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::UART3_RX_REQ)
+                self.variant(DMA_SEL5_A::UART3_RX_REQ)
             }
             #[doc = "`10011`"]
             #[inline(always)]
             pub fn uart3_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::UART3_TX_REQ)
+                self.variant(DMA_SEL5_A::UART3_TX_REQ)
             }
             #[doc = "`10100`"]
             #[inline(always)]
             pub fn aes_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::AES_REQ)
+                self.variant(DMA_SEL5_A::AES_REQ)
             }
             #[doc = "`10101`"]
             #[inline(always)]
             pub fn sha_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::SHA_RX_REQ)
+                self.variant(DMA_SEL5_A::SHA_RX_REQ)
             }
             #[doc = "`10110`"]
             #[inline(always)]
             pub fn ai_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::AI_RX_REQ)
+                self.variant(DMA_SEL5_A::AI_RX_REQ)
             }
             #[doc = "`10111`"]
             #[inline(always)]
             pub fn fft_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::FFT_RX_REQ)
+                self.variant(DMA_SEL5_A::FFT_RX_REQ)
             }
             #[doc = "`11000`"]
             #[inline(always)]
             pub fn fft_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::FFT_TX_REQ)
+                self.variant(DMA_SEL5_A::FFT_TX_REQ)
             }
             #[doc = "`11001`"]
             #[inline(always)]
             pub fn i2s0_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S0_TX_REQ)
+                self.variant(DMA_SEL5_A::I2S0_TX_REQ)
             }
             #[doc = "`11010`"]
             #[inline(always)]
             pub fn i2s0_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S0_RX_REQ)
+                self.variant(DMA_SEL5_A::I2S0_RX_REQ)
             }
             #[doc = "`11011`"]
             #[inline(always)]
             pub fn i2s1_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S1_TX_REQ)
+                self.variant(DMA_SEL5_A::I2S1_TX_REQ)
             }
             #[doc = "`11100`"]
             #[inline(always)]
             pub fn i2s1_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S1_RX_REQ)
+                self.variant(DMA_SEL5_A::I2S1_RX_REQ)
             }
             #[doc = "`11101`"]
             #[inline(always)]
             pub fn i2s2_tx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S2_TX_REQ)
+                self.variant(DMA_SEL5_A::I2S2_TX_REQ)
             }
             #[doc = "`11110`"]
             #[inline(always)]
             pub fn i2s2_rx_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S2_RX_REQ)
+                self.variant(DMA_SEL5_A::I2S2_RX_REQ)
             }
             #[doc = "`11111`"]
             #[inline(always)]
             pub fn i2s0_bf_dir_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S0_BF_DIR_REQ)
+                self.variant(DMA_SEL5_A::I2S0_BF_DIR_REQ)
             }
             #[doc = "`100000`"]
             #[inline(always)]
             pub fn i2s0_bf_voice_req(self) -> &'a mut W {
-                self.variant(super::dma_sel0::DMA_SEL0_A::I2S0_BF_VOICE_REQ)
+                self.variant(DMA_SEL5_A::I2S0_BF_VOICE_REQ)
             }
             #[doc = r"Writes raw bits to the field"]
             #[inline(always)]
@@ -42007,7 +43168,8 @@ pub mod aes {
         pub type R = crate::R<u32, super::KEY>;
         #[doc = "Writer for register key[%s]"]
         pub type W = crate::W<u32, super::KEY>;
-        #[doc = "Register key[%s] `reset()`'s with value 0"]
+        #[doc = "Register key[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::KEY {
             type Type = u32;
             #[inline(always)]
@@ -42390,7 +43552,7 @@ pub mod aes {
         #[doc = "Input data order"]
         pub type INPUT_ORDER_A = KEY_ORDER_A;
         #[doc = "Reader of field `input_order`"]
-        pub type INPUT_ORDER_R = crate::R<bool, KEY_ORDER_A>;
+        pub type INPUT_ORDER_R = crate::R<bool, INPUT_ORDER_A>;
         #[doc = "Write proxy for field `input_order`"]
         pub struct INPUT_ORDER_W<'a> {
             w: &'a mut W,
@@ -42406,12 +43568,12 @@ pub mod aes {
             #[doc = "Big Endian"]
             #[inline(always)]
             pub fn be(self) -> &'a mut W {
-                self.variant(KEY_ORDER_A::BE)
+                self.variant(INPUT_ORDER_A::BE)
             }
             #[doc = "Little Endian"]
             #[inline(always)]
             pub fn le(self) -> &'a mut W {
-                self.variant(KEY_ORDER_A::LE)
+                self.variant(INPUT_ORDER_A::LE)
             }
             #[doc = r"Sets the field bit"]
             #[inline(always)]
@@ -42433,7 +43595,7 @@ pub mod aes {
         #[doc = "Output data order"]
         pub type OUTPUT_ORDER_A = KEY_ORDER_A;
         #[doc = "Reader of field `output_order`"]
-        pub type OUTPUT_ORDER_R = crate::R<bool, KEY_ORDER_A>;
+        pub type OUTPUT_ORDER_R = crate::R<bool, OUTPUT_ORDER_A>;
         #[doc = "Write proxy for field `output_order`"]
         pub struct OUTPUT_ORDER_W<'a> {
             w: &'a mut W,
@@ -42449,12 +43611,12 @@ pub mod aes {
             #[doc = "Big Endian"]
             #[inline(always)]
             pub fn be(self) -> &'a mut W {
-                self.variant(KEY_ORDER_A::BE)
+                self.variant(OUTPUT_ORDER_A::BE)
             }
             #[doc = "Little Endian"]
             #[inline(always)]
             pub fn le(self) -> &'a mut W {
-                self.variant(KEY_ORDER_A::LE)
+                self.variant(OUTPUT_ORDER_A::LE)
             }
             #[doc = r"Sets the field bit"]
             #[inline(always)]
@@ -42543,7 +43705,8 @@ pub mod aes {
         pub type R = crate::R<u32, super::IV>;
         #[doc = "Writer for register iv[%s]"]
         pub type W = crate::W<u32, super::IV>;
-        #[doc = "Register iv[%s] `reset()`'s with value 0"]
+        #[doc = "Register iv[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::IV {
             type Type = u32;
             #[inline(always)]
@@ -42580,7 +43743,7 @@ pub mod aes {
         #[doc = "Input data endian"]
         pub type ENDIAN_A = super::mode_ctl::KEY_ORDER_A;
         #[doc = "Reader of field `endian`"]
-        pub type ENDIAN_R = crate::R<bool, super::mode_ctl::KEY_ORDER_A>;
+        pub type ENDIAN_R = crate::R<bool, ENDIAN_A>;
         #[doc = "Write proxy for field `endian`"]
         pub struct ENDIAN_W<'a> {
             w: &'a mut W,
@@ -42596,12 +43759,12 @@ pub mod aes {
             #[doc = "Big Endian"]
             #[inline(always)]
             pub fn be(self) -> &'a mut W {
-                self.variant(super::mode_ctl::KEY_ORDER_A::BE)
+                self.variant(ENDIAN_A::BE)
             }
             #[doc = "Little Endian"]
             #[inline(always)]
             pub fn le(self) -> &'a mut W {
-                self.variant(super::mode_ctl::KEY_ORDER_A::LE)
+                self.variant(ENDIAN_A::LE)
             }
             #[doc = r"Sets the field bit"]
             #[inline(always)]
@@ -43159,7 +44322,8 @@ pub mod aes {
         pub type R = crate::R<u32, super::GCM_IN_TAG>;
         #[doc = "Writer for register gcm_in_tag[%s]"]
         pub type W = crate::W<u32, super::GCM_IN_TAG>;
-        #[doc = "Register gcm_in_tag[%s] `reset()`'s with value 0"]
+        #[doc = "Register gcm_in_tag[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::GCM_IN_TAG {
             type Type = u32;
             #[inline(always)]
@@ -43448,7 +44612,7 @@ pub mod aes {
         #[doc = "GCM tag can be written to gcm_in_tag when this flag is set"]
         pub type TAG_IN_FLAG_A = super::data_in_flag::DATA_IN_FLAG_A;
         #[doc = "Reader of field `tag_in_flag`"]
-        pub type TAG_IN_FLAG_R = crate::R<bool, super::data_in_flag::DATA_IN_FLAG_A>;
+        pub type TAG_IN_FLAG_R = crate::R<bool, TAG_IN_FLAG_A>;
         #[doc = "Write proxy for field `tag_in_flag`"]
         pub struct TAG_IN_FLAG_W<'a> {
             w: &'a mut W,
@@ -43464,12 +44628,12 @@ pub mod aes {
             #[doc = "Cannot input"]
             #[inline(always)]
             pub fn cannot_input(self) -> &'a mut W {
-                self.variant(super::data_in_flag::DATA_IN_FLAG_A::CANNOT_INPUT)
+                self.variant(TAG_IN_FLAG_A::CANNOT_INPUT)
             }
             #[doc = "Can input"]
             #[inline(always)]
             pub fn can_input(self) -> &'a mut W {
-                self.variant(super::data_in_flag::DATA_IN_FLAG_A::CAN_INPUT)
+                self.variant(TAG_IN_FLAG_A::CAN_INPUT)
             }
             #[doc = r"Sets the field bit"]
             #[inline(always)]
@@ -43544,7 +44708,8 @@ pub mod aes {
         pub type R = crate::R<u32, super::GCM_OUT_TAG>;
         #[doc = "Writer for register gcm_out_tag[%s]"]
         pub type W = crate::W<u32, super::GCM_OUT_TAG>;
-        #[doc = "Register gcm_out_tag[%s] `reset()`'s with value 0"]
+        #[doc = "Register gcm_out_tag[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::GCM_OUT_TAG {
             type Type = u32;
             #[inline(always)]
@@ -43570,7 +44735,8 @@ pub mod aes {
         pub type R = crate::R<u32, super::KEY_EXT>;
         #[doc = "Writer for register key_ext[%s]"]
         pub type W = crate::W<u32, super::KEY_EXT>;
-        #[doc = "Register key_ext[%s] `reset()`'s with value 0"]
+        #[doc = "Register key_ext[%s]
+`reset()`'s with value 0"]
         impl crate::ResetValue for super::KEY_EXT {
             type Type = u32;
             #[inline(always)]
@@ -43711,7 +44877,10 @@ pub mod rtc {
             pub fn week(&self) -> WEEK_R {
                 WEEK_R::new((self.bits & 0x07) as u8)
             }
-            #[doc = "Bits 8:12 - Day. Range \\[1,31\\] or \\[1,30\\] or \\[1,29\\] or \\[1,28\\]"]
+            #[doc = "Bits 8:12 - Day. Range \\[1,31\\]
+or \\[1,30\\]
+or \\[1,29\\]
+or \\[1,28\\]"]
             #[inline(always)]
             pub fn day(&self) -> DAY_R {
                 DAY_R::new(((self.bits >> 8) & 0x1f) as u8)
@@ -43733,7 +44902,10 @@ pub mod rtc {
             pub fn week(&mut self) -> WEEK_W {
                 WEEK_W { w: self }
             }
-            #[doc = "Bits 8:12 - Day. Range \\[1,31\\] or \\[1,30\\] or \\[1,29\\] or \\[1,28\\]"]
+            #[doc = "Bits 8:12 - Day. Range \\[1,31\\]
+or \\[1,30\\]
+or \\[1,29\\]
+or \\[1,28\\]"]
             #[inline(always)]
             pub fn day(&mut self) -> DAY_W {
                 DAY_W { w: self }
@@ -43935,7 +45107,10 @@ pub mod rtc {
             pub fn week(&self) -> WEEK_R {
                 WEEK_R::new((self.bits & 0x07) as u8)
             }
-            #[doc = "Bits 8:12 - Day. Range \\[1,31\\] or \\[1,30\\] or \\[1,29\\] or \\[1,28\\]"]
+            #[doc = "Bits 8:12 - Day. Range \\[1,31\\]
+or \\[1,30\\]
+or \\[1,29\\]
+or \\[1,28\\]"]
             #[inline(always)]
             pub fn day(&self) -> DAY_R {
                 DAY_R::new(((self.bits >> 8) & 0x1f) as u8)
@@ -43957,7 +45132,10 @@ pub mod rtc {
             pub fn week(&mut self) -> WEEK_W {
                 WEEK_W { w: self }
             }
-            #[doc = "Bits 8:12 - Day. Range \\[1,31\\] or \\[1,30\\] or \\[1,29\\] or \\[1,28\\]"]
+            #[doc = "Bits 8:12 - Day. Range \\[1,31\\]
+or \\[1,30\\]
+or \\[1,29\\]
+or \\[1,28\\]"]
             #[inline(always)]
             pub fn day(&mut self) -> DAY_W {
                 DAY_W { w: self }
